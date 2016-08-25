@@ -1,0 +1,71 @@
+@CHARSET "UTF-8";
+
+#login {
+	border: 2px solid lavender;
+	border-top: 3px solid red;
+	width: 325px;
+	height: 325px;
+	margin-left: 900px;
+	margin-top: 130px;
+	background-color: white;
+}
+#navigate {
+	width: 100%;
+	height: 39px;
+	background-color: #970102;
+}
+#li {
+	display: inline; /* 让表格所有行在一条线上 */
+}
+#navigate_item {
+	float: left;
+	border-left: 1px solid gray;
+	width: 5em;
+	background-color: #970102;
+	text-align: center;
+	font-size: 17px;
+}
+#content {
+	margin-left: 55px;
+}
+#userInfor {
+	background-color: lightgray;
+}
+ul[login] {
+	list-style-type: none;
+}
+li[login] {
+	padding: 10px;
+}
+
+a[form]:link {color: darkgray; text-decoration: none;} 
+a[form]:visited {color: darkgray;} 									   
+a[form]:hover {color: #970102; text-decoration: underline;} 			
+a[form]:active {color: #970102}
+
+#loginButton {
+	background-color: #970102;
+	width: 225px;
+	height: 35px;
+	color: white;
+	font-size: 18px;
+	font-weight: bold;
+}
+#resetButton {
+	margin-left: 122px;
+	width: 40px;
+	height: 30px;
+}
+#closeButton {
+	width: 40px;
+	height: 30px;
+}
+.footer {
+	font-size: 11pt;
+	color: #970102;
+	text-align: center; 
+	line-height: 140%;
+}
+
+
+

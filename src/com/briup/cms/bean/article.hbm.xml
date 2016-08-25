@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.briup.cms.bean">
+	<class name="Article" table="t_article">
+        <id name="id" column="id">
+            <generator class="increment"/>
+        </id>
+        <property name="content" column="content"/>
+        <property name="title" column="title" />
+        <property name="author" column="author" />
+        <property name="publisurDate" column="publisurDate" />
+        <property name="clickTimes" column="clickTimes" />
+        
+        <many-to-one name="category" class="Category" column="c_id"/>
+    </class>
+</hibernate-mapping>
