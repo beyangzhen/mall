@@ -20,6 +20,8 @@ public class ArticleServiceImpl implements IArticleService {
 		
 		articleDao.save(article);
 		
+		Assert.assertTrue(article.getId > 0);
+		
 		session.getTransaction().commit();
 		session.close();
 	}
