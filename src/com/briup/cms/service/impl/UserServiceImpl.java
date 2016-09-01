@@ -23,7 +23,7 @@ public class UserServiceImpl implements IUserService {
 		
 		userDao.save(user);
 		
-		Assert.assertTrue(user.getId > 0);
+		//Assert.assertTrue(user.getId > 0); //junit的函数，测试是否满足条件
 		
 		session.getTransaction().commit();
 		session.close();
