@@ -23,7 +23,7 @@ public class CategoryServiceImpl implements ICategoryService {
 		
 		categoryDao.save(category);
 		
-		Assert.assertTrue(category.getId > 0);
+		//Assert.assertTrue(category.getId > 0); //junit的函数
 		
 		session.getTransaction().commit();
 		session.close();
