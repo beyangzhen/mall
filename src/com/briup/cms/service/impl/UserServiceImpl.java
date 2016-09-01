@@ -23,6 +23,8 @@ public class UserServiceImpl implements IUserService {
 		
 		userDao.save(user);
 		
+		Assert.assertTrue(user.getId > 0);
+		
 		session.getTransaction().commit();
 		session.close();
 	}
