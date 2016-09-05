@@ -15,6 +15,7 @@ import com.briup.cms.service.IUserService;
 import com.briup.cms.service.impl.CategoryServiceImpl;
 import com.briup.cms.service.impl.UserServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
+import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
 
 public class BaseAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
@@ -52,6 +53,16 @@ public class BaseAction extends ActionSupport {
 			@Result(name="success",location="/WEB-INF/jsp/login.jsp")
 			})
 	public String toLogin() {
+		return SUCCESS;
+	}
+	
+	/**
+	 * 跳转到注册界面
+	 */
+	@Action(value="toRegister", results={
+			@Result(name="success",location="/WEB-INF/jsp/register.jsp")
+			})
+	public String toRegister() {
 		return SUCCESS;
 	}
 	
@@ -103,6 +114,24 @@ public class BaseAction extends ActionSupport {
 		} else {
 			return ERROR;
 		}
+	}
+	
+	/**
+	 * 处理注册
+	 */
+	@Action(value="register", results={
+			@Result(name="success", location="/WEB-INF/jsp/login.jsp"),
+			@Result(name="error", location="/WEB-INF/jsp/loginFail.jsp")
+			})
+	public String register() {
+		User user = new User();
+		user.setUsername(username);
+		user.setPassword(password);
+		user.setLevel(level);
+		userService.add(user);
+		System.out.println("恭喜您，注册成功！");
+	
+		return SUCCESS;
 	}
 	
 	/**
