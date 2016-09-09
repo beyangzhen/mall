@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>2-1-1资源管理</title>
+<title>网上商城后台管理</title>
 <link rel="stylesheet" type="text/css" href="../theme/1/css/common.css">
 <link rel="stylesheet" type="text/css" href="../theme/1/css/style.css">
 <link rel="stylesheet" type="text/css" href="../theme/1/css/table.css">
@@ -41,9 +41,13 @@ $(function(){
 					<ul class="baseUI">
 						<li url="toAddCategory.action"><a href="#"><em class="base_basicset"></em><span>添加栏目</span></a></li>
 						<li url="toCategoryManager.action"><a href="#"><em class="base_userset"></em><span>栏目管理</span></a></li>
+						<br/>
+						<li url="../toList.action"><a href="#"><em class="base_userset"></em><span>商品类型管理</span></a></li>
+						<br/>
 						<li url="toAddArticle.action"><a href="#"><em class="base_roll"></em><span>信息发布</span></a></li>
 						<li url="toArticleManager.action"><a href="#"><em class="base_sys"></em><span>信息管理</span></a></li>
-						<li url="toAddUser.action"><a href="#"><em class="base_roll"></em><span>添加用户</span></a></li>
+						<br/>
+						<li url="toAddUser.action"><a href="#"><em class="base_basicset"></em><span>添加用户</span></a></li>
 						<li url="toUserManager.action"><a href="#"><em class="base_userset"></em><span>用户管理</span></a></li>
 					</ul>
 				</div>
@@ -55,7 +59,7 @@ $(function(){
 			</div>
 		</div>
 		<div id="foot">
-			<a href="#">上海师悦信息科技有限公司</a>
+			<a href="#">江西理工大学</a>
 		</div>
 	</div>
 </body>
