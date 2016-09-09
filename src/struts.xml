@@ -10,7 +10,7 @@
     <package name="default" namespace="/" extends="struts-default">
 		<interceptors>  
 			<!-- 配置自定义拦截器 -->
-            <interceptor name="loginInteceptor" class="com.briup.cms.web.action.interceptor.LoginInterceptor" />  
+            <interceptor name="loginInteceptor" class="com.mall.cn.web.action.interceptor.LoginInterceptor" />  
             <interceptor-stack name="loginStack">  
             	<interceptor-ref name="loginInteceptor">  
                 	<param name="excludeMethods">toLogin,login</param>  
