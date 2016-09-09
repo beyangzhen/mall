@@ -8,7 +8,7 @@
 	overflow:hidden;
 	background:url(../../images/front/topbg.png) no-repeat;
 	background-position:100% 0;
-	position:relative;
+	/* position:relative; */
 	z-index:100}
 .topbg{
 	background:url(../../images/front/zye.png) no-repeat;}
@@ -106,7 +106,7 @@
 	background:url(../../images/front/nav.png) no-repeat;}	
 .navUI li{
 	float:left;
-	height:43px;
+	height:43px; 
 	line-height:43px;
 	background:url(../../images/front/navli.png) no-repeat;
 	background-position:0 50%;}	
@@ -424,6 +424,8 @@
 	line-height:25px;}
 .pl30{
 	padding-left:30px}
+.pl15{
+	padding-left:15px}
 .page{
 	height:40px;
 	line-height:40px;
