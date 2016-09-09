@@ -9,9 +9,9 @@
 
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost/cms</property>
+        <property name="connection.url">jdbc:mysql://localhost/db_mall</property>
         <property name="connection.username">root</property>
-        <property name="connection.password">123</property>
+        <property name="connection.password">root</property>
 
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">1</property>
@@ -34,11 +34,11 @@
         <property name="hbm2ddl.auto">update</property>
         
         <!-- 方式一 --><!-- 类映射到表的配置文件Category.hbm.xml的路径 -->
-        <!-- <mapping resource="com/briup/cms/bean/category.hbm.xml"/> -->
+        <!-- <mapping resource="com/mall/cn/bean/category.hbm.xml"/> -->
 		<!-- 方式二 --><!-- annotation(注解)的方式 -->
-		<mapping class="com.briup.cms.bean.Category"/>
-		<mapping class="com.briup.cms.bean.Article"/>
-		<mapping class="com.briup.cms.bean.User"/>
+		<mapping class="com.mall.cn.bean.Category"/>
+		<mapping class="com.mall.cn.bean.Article"/>
+		<mapping class="com.mall.cn.bean.User"/>
 		
     </session-factory>
 </hibernate-configuration>
