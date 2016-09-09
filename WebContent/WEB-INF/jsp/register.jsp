@@ -1,4 +1,4 @@
-﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %> 
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %> 
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -103,10 +103,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  			<td style="background-color:#F3F6FA;">密码确认</td>
 		  			<td style="background-color:#F3F6FA;"><input name="password2" type="text" size="25" maxlength="25" onblur="check(register)">
 		  				<span id="pwdmsg"></span></td>
-		  		</tr>
-		  		<tr>
-		  			<td style="background-color:#F3F6FA;">级别</td>
-		  			<td style="background-color:#F3F6FA;"><input name="level" type="text" size="25" maxlength="25"></td>
 		  		</tr>
 		  		<tr>
 		  			<td style="background-color:#F3F6FA;">电话</td>
