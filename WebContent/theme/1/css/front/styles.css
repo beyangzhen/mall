@@ -28,6 +28,43 @@
 #content {
 	margin-left: 55px;
 }
+#goods {
+	margin-top: 22px;
+	margin-left: 90px;
+}
+#price {
+	color: #D70102;
+	font-weight: bold;
+	font-size: 22px;
+	text-align: center;
+}
+#goodsInfo {
+	margin-top: 30px;
+	margin-left: 100px;
+}
+#address {
+	border: 2px solid lightgray;
+	height: 45px;
+	width: 399px;
+	margin-top: 30px;
+	padding: 20px;
+}
+#order {
+	border-top: 4px solid #970102;
+	border-bottom: 2px solid #970102;
+	height: 53px;
+	margin-top: 40px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	padding-left: 11px;
+}
+#money {
+	background-color: gainsboro;
+	height: 50px;
+	text-align: center;
+	margin-top: 50px;
+	padding-top: 20px;
+}
 #userInfor {
 	background-color: lightgray;
 }
@@ -38,8 +75,11 @@ li[login] {
 	padding: 10px;
 }
 
-a[form]:link {color: darkgray; text-decoration: none;} 
-a[form]:visited {color: darkgray;} 									   
+a:link {text-decoration: none;} 
+a:hover {text-decoration: underline;} 
+
+a[form]:link {color: #CCCCD1; text-decoration: none;} 
+a[form]:visited {color: #CCCCD1;} 	/* url为#时，和访问页面是同一个，则链接前就是访问后的显示  */							   
 a[form]:hover {color: #970102; text-decoration: underline;} 			
 a[form]:active {color: #970102}
 
@@ -60,9 +100,42 @@ a[form]:active {color: #970102}
 	width: 40px;
 	height: 30px;
 }
-/* #tdNoborder {
+#registerButton {
+	background-color: #F3F6FA;
+	width: 90px;
+	height: 28px;
+	font-size: 14px;
+	font-weight: bold;
+}
+#buyButton {
+	background-color: #970102;
+	width: 180px;
+	height: 43px;
+	color: white;
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 63px;
+}
+#payButton {
+	background-color: #970102;
+	width: 180px;
+	height: 43px;
+	color: white;
+	font-size: 18px;
+	font-weight: bold;
+	margin-top: 60px;
+}
+#confirmButton {
+	background-color: #970102;
+	width: 130px;
+	height: 30px;
+	color: white;
+	font-size: 13px;
+	font-weight: bold;
+}
+#tdNoborder {
 	border: none或 0px;
-} */
+}
 .footer {
 	font-size: 11pt;
 	color: #970102;
