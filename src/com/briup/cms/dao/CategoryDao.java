@@ -1,14 +1,14 @@
-package com.briup.cms.dao;
+package com.mall.cn.dao;
 
 import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import com.briup.cms.bean.Category;
-import com.briup.cms.common.HibernateSessionFactory;
+import com.mall.cn.bean.User;
+import com.mall.cn.common.util.HibernateSessionFactory;
 
-public class CategoryDao {
+public class UserDao {
 	
 	//封装供本类用
 	private Session getSession(){
@@ -18,9 +18,9 @@ public class CategoryDao {
 	/**
 	 * 保存
 	 * */
-	public void save(Category category) {
+	public void save(User user) {
 		Session session = getSession();
-		session.save(category);
+		session.save(user);
 	}
 	
 	/**
@@ -28,40 +28,46 @@ public class CategoryDao {
 	 * */
 	public void deleteById(long id){
 		Session session = getSession();
-		Category c = (Category)session.load(Category.class, id);
-		if(c != null){
-			session.delete(c);
+		User u = (User)session.load(User.class, id);
+		if(u != null){
+			session.delete(u);
 		}
 	}
 	
 	/**
-	 * 修改
-	 * */
-	public void update(Category category){
-		Session session = getSession();
-	    session.update(category);
-	}
-	
-	/**
-	 * 查询
+	 * 查询所有用户
 	 * */
 	@SuppressWarnings("unchecked") //为了"return query.list()"不报警告
-	public List<Category> findAll() {
-		String hql = "from Category";
+	public List<User> findAll() {
+		String hql = "from User";
 		Query query = getSession().createQuery(hql);
 		
 		return query.list();
 	}
 	
 	/**
-	 * 通过id查询
+	 * 查询当前用户
 	 * */
-	public Category findById(long id){
-		Session session = getSession();
-		Category category = (Category)session.load(Category.class, id);
-		System.out.println(category);
+	@SuppressWarnings("unchecked")
+	public User query(User user) {
+		String hql = "from User u where u.username=?";
+		Query query = getSession().createQuery(hql);
+		query.setString(0, user.getUsername());
+		List<User> users = (List<User>)query.list();
+		User user2 = null;
+		for(User u : users) {
+			user2 = u;
+		}
 		
-		return category;
+		return user2;
+	}
+
+	/**
+	 * 修改
+	 * */
+	public void update(User user){
+		Session session = getSession();
+	    session.update(user);
 	}
 	
 }
