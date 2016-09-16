@@ -1,12 +1,12 @@
-package com.briup.cms.dao;
+package com.mall.cn.dao;
 
 import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import com.briup.cms.bean.User;
-import com.briup.cms.common.HibernateSessionFactory;
+import com.mall.cn.bean.User;
+import com.mall.cn.common.util.HibernateSessionFactory;
 
 public class UserDao {
 	
@@ -60,6 +60,14 @@ public class UserDao {
 		}
 		
 		return user2;
+	}
+
+	/**
+	 * 修改
+	 * */
+	public void update(User user){
+		Session session = getSession();
+	    session.update(user);
 	}
 	
 }
