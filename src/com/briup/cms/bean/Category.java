@@ -1,4 +1,4 @@
-package com.briup.cms.bean;
+package com.mall.cn.bean;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -21,6 +21,8 @@ public class Category {
 	private Integer code;
 	//一对多
 	private Set<Article> articles = new HashSet<Article>();
+	//一对多
+	private Set<Goods> goods = new HashSet<Goods>();
 	
 	@Id
 	@GeneratedValue
@@ -51,5 +53,14 @@ public class Category {
 	public void setArticles(Set<Article> articles) {
 		this.articles = articles;
 	}
+	@OneToMany(mappedBy="category", 
+			cascade={CascadeType.ALL}
+	)
+	public Set<Goods> getGoods() {
+		return goods;
+	}
+	public void setGoods(Set<Goods> goods) {
+		this.goods = goods;
+	}	
 	
 }
