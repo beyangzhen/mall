@@ -1,8 +1,8 @@
-package com.briup.cms.service;
+package com.mall.cn.service;
 
 import java.util.List;
 
-import com.briup.cms.bean.Article;
+import com.mall.cn.bean.Article;
 
 public interface IArticleService {
 	void add(Article article);
