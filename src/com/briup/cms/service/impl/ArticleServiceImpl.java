@@ -1,13 +1,13 @@
-package com.briup.cms.service.impl;
+package com.mall.cn.service.impl;
 
 import java.util.List;
 
 import org.hibernate.Session;
 
-import com.briup.cms.bean.Article;
-import com.briup.cms.common.HibernateSessionFactory;
-import com.briup.cms.dao.ArticleDao;
-import com.briup.cms.service.IArticleService;
+import com.mall.cn.bean.Article;
+import com.mall.cn.common.util.HibernateSessionFactory;
+import com.mall.cn.dao.ArticleDao;
+import com.mall.cn.service.IArticleService;
 
 public class ArticleServiceImpl implements IArticleService {
 	
