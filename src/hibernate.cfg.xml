@@ -39,6 +39,7 @@
 		<mapping class="com.mall.cn.bean.Category"/>
 		<mapping class="com.mall.cn.bean.Article"/>
 		<mapping class="com.mall.cn.bean.User"/>
+		<mapping class="com.mall.cn.bean.Goods"/>
 		
     </session-factory>
 </hibernate-configuration>
