@@ -5,10 +5,10 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import com.mall.cn.bean.User;
+import com.mall.cn.bean.Category;
 import com.mall.cn.common.util.HibernateSessionFactory;
 
-public class UserDao {
+public class CategoryDao {
 	
 	//封装供本类用
 	private Session getSession(){
@@ -18,9 +18,9 @@ public class UserDao {
 	/**
 	 * 保存
 	 * */
-	public void save(User user) {
+	public void save(Category category) {
 		Session session = getSession();
-		session.save(user);
+		session.save(category); // 此处体现OR-Mapping，将category对象自动存到对应数据库表中
 	}
 	
 	/**
@@ -28,46 +28,41 @@ public class UserDao {
 	 * */
 	public void deleteById(long id){
 		Session session = getSession();
-		User u = (User)session.load(User.class, id);
-		if(u != null){
-			session.delete(u);
+		Category c = (Category)session.load(Category.class, id);
+		if(c != null){
+			session.delete(c);
 		}
 	}
 	
 	/**
-	 * 查询所有用户
+	 * 修改
+	 * */
+	public void update(Category category){
+		Session session = getSession();
+	    session.update(category);
+	}
+	
+	/**
+	 * 查询
 	 * */
 	@SuppressWarnings("unchecked") //为了"return query.list()"不报警告
-	public List<User> findAll() {
-		String hql = "from User";
+	public List<Category> findAll() {
+		String hql = "from Category";
 		Query query = getSession().createQuery(hql);
 		
 		return query.list();
 	}
 	
 	/**
-	 * 查询当前用户
+	 * 通过id查询
 	 * */
-	@SuppressWarnings("unchecked")
-	public User query(User user) {
-		String hql = "from User u where u.username=?";
-		Query query = getSession().createQuery(hql);
-		query.setString(0, user.getUsername());
-		List<User> users = (List<User>)query.list();
-		User user2 = null;
-		for(User u : users) {
-			user2 = u;
-		}
-		
-		return user2;
-	}
-
-	/**
-	 * 修改
-	 * */
-	public void update(User user){
+	public Category findById(long id){
 		Session session = getSession();
-	    session.update(user);
+		
+		// 注意延迟加载的问题（使用get()解决）
+		Category category = (Category)session.load(Category.class, id);
+		
+		return category;
 	}
 	
 }
