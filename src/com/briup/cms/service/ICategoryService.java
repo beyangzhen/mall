@@ -2,17 +2,20 @@ package com.mall.cn.service;
 
 import java.util.List;
 
-import com.mall.cn.bean.User;
+import com.mall.cn.bean.Category;
 
-public interface IUserService {
-	// 添加用户
-	void add(User user);
-	// 列出所有用户
-	List<User> list();
-	// 查询当前用户
-	User find(User user);
-	// 删除用户
+/**
+ * 栏目管理的业务逻辑
+ * */
+public interface ICategoryService {
+	//添加栏目
+	void add(Category category);
+	//列出所有栏目
+	List<Category> list();
+	//通过id获取栏目信息
+	Category findById(long id);
+	//删除栏目
 	void delete(long id);
-	// 修改用户
-	public void update(User user);
+	//修改栏目信息
+	void update(Category category);
 }
