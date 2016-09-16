@@ -1,4 +1,4 @@
-package com.briup.cms.bean;
+package com.mall.cn.bean;
 
 import java.util.Date;
 
