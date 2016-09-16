@@ -1,14 +1,14 @@
 
-package com.briup.cms.web.action.manager;
+package com.mall.cn.web.action.manager;
 
 import java.util.List;
 
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 
-import com.briup.cms.bean.Category;
-import com.briup.cms.service.ICategoryService;
-import com.briup.cms.service.impl.CategoryServiceImpl;
+import com.mall.cn.bean.Category;
+import com.mall.cn.service.ICategoryService;
+import com.mall.cn.service.impl.CategoryServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CategoryAction extends ActionSupport {
@@ -27,6 +27,7 @@ public class CategoryAction extends ActionSupport {
 	private List<Category> categoryList;
 	
 	private Category category;
+	
 	private ICategoryService categoryService = new CategoryServiceImpl();
 	
 	/**
@@ -93,7 +94,7 @@ public class CategoryAction extends ActionSupport {
 		category.setId(id);
 		category.setName(name);
 		category.setCode(code);
-		//调用sercice层的服务，完成添加栏目的功能
+		//调用sercice层的服务，完成修改栏目的功能
 		categoryService.update(category);
 	}
 
