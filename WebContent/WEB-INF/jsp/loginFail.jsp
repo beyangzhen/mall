@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>错误提示</title>
+    <title>登录失败</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-   	 用户名或密码错误！
-  	<input name="submit" type="submit" value="返回" onClick="history.back(-1)">
+   	 <h1>用户名或密码错误！</h1>
+  	 <input name="submit" type="submit" value="返回" onClick="history.back(-1)">
   </body>
 </html>
