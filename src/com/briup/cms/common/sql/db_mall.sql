@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2016-09-09 14:02:45
+Date: 2016-09-10 15:19:35
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -82,6 +82,18 @@ INSERT INTO `t_goods` VALUES ('1', '外套01', '399', 'S', '100', '外套', '1')
 INSERT INTO `t_goods` VALUES ('2', '外套01', '399', 'M', '100', '外套', '1');
 INSERT INTO `t_goods` VALUES ('3', '外套01', '399', 'L', '100', '外套', '1');
 INSERT INTO `t_goods` VALUES ('4', '外套01', '399', 'XL', '100', '外套', '1');
+INSERT INTO `t_goods` VALUES ('5', '外套02', '689', 'S', '100', '外套', '1');
+INSERT INTO `t_goods` VALUES ('6', '外套02', '689', 'M', '100', '外套', '1');
+INSERT INTO `t_goods` VALUES ('7', '外套02', '689', 'L', '100', '外套', '1');
+INSERT INTO `t_goods` VALUES ('8', '外套02', '689', 'XL', '100', '外套', '1');
+INSERT INTO `t_goods` VALUES ('9', '外套03', '599', 'S', '100', '外套', '1');
+INSERT INTO `t_goods` VALUES ('10', '外套03', '599', 'M', '100', '外套', '1');
+INSERT INTO `t_goods` VALUES ('11', '外套03', '599', 'L', '100', '外套', '1');
+INSERT INTO `t_goods` VALUES ('12', '外套03', '599', 'XL', '100', '外套', '1');
+INSERT INTO `t_goods` VALUES ('13', '外套04', '799', 'S', '100', '外套', '1');
+INSERT INTO `t_goods` VALUES ('14', '外套04', '799', 'M', '100', '外套', '1');
+INSERT INTO `t_goods` VALUES ('15', '外套04', '799', 'L', '100', '外套', '1');
+INSERT INTO `t_goods` VALUES ('16', '外套04', '799', 'XL', '100', '外套', '1');
 
 -- ----------------------------
 -- Table structure for t_user
@@ -92,12 +104,15 @@ CREATE TABLE `t_user` (
   `username` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `level` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `account` double NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_user
 -- ----------------------------
-INSERT INTO `t_user` VALUES ('1', '杨祯', '123', 'M');
-INSERT INTO `t_user` VALUES ('2', 'yangzhen', '123', 'C');
-INSERT INTO `t_user` VALUES ('15', 'yz', '123', 'C');
+INSERT INTO `t_user` VALUES ('1', '杨祯', '123', 'M', '南昌', '187', '10000');
+INSERT INTO `t_user` VALUES ('2', 'yangzhen', '123', 'C', '南昌', '187', '1000');
+INSERT INTO `t_user` VALUES ('3', 'yz', '123', 'C', '南昌', '187', '100');
