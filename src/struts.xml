@@ -5,10 +5,11 @@
 
 <struts>
     <constant name="struts.enable.DynamicMethodInvocation" value="false" />
-    <constant name="struts.devMode" value="true" />
+    <constant name="struts.devMode" value="true" /><!-- 表示修改后不用重启 -->
     
     <package name="default" namespace="/" extends="struts-default">
 		<interceptors>  
+		
 			<!-- 配置自定义拦截器 -->
             <interceptor name="loginInteceptor" class="com.mall.cn.web.action.interceptor.LoginInterceptor" />  
             <interceptor-stack name="loginStack">  
@@ -17,6 +18,7 @@
                 </interceptor-ref>  
                 <interceptor-ref name="defaultStack"></interceptor-ref>  
             </interceptor-stack>  
+            
 		</interceptors>  
 
       	<!-- 默认使用的拦截器 -->
