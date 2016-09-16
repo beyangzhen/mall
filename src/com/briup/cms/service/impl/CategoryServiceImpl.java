@@ -1,13 +1,13 @@
-package com.briup.cms.service.impl;
+package com.mall.cn.service.impl;
 
 import java.util.List;
 
 import org.hibernate.Session;
 
-import com.briup.cms.bean.Category;
-import com.briup.cms.common.HibernateSessionFactory;
-import com.briup.cms.dao.CategoryDao;
-import com.briup.cms.service.ICategoryService;
+import com.mall.cn.bean.Category;
+import com.mall.cn.common.util.HibernateSessionFactory;
+import com.mall.cn.dao.CategoryDao;
+import com.mall.cn.service.ICategoryService;
 
 public class CategoryServiceImpl implements ICategoryService {
 	private CategoryDao categoryDao;
