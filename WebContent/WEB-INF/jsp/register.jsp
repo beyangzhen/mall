@@ -18,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="description" content="This is my page">
 	
 	
-	<link rel="stylesheet" type="text/css" href="CSS/styles.css">
+	<link rel="stylesheet" type="text/css" href="theme/1/css/front/styles.css">
 	
 
 	<script type="text/javascript">
@@ -80,10 +80,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body style="background-image:url(theme/1/images/front/register_bg.jpg); background-repeat: no-repeat; background-position: center; height:620px;"> 
   	<div id="navigate">
   		<ul>
-  			<li id="li"><a id="navigate_item" style="margin-top:10px;" href="toIndex.action">首页</a></li>
+  			<li id="li"><a id="navigate_item" style="margin-top:10px; color:white; font-weight:bold;" href="toIndex.action">首页</a></li>
   		</ul>
   	</div>
-  	<div>
+  	<div style="margin-top: 20px;">
   		<form name="register" method="post" action="register.action">
 	  		<table align="center" cellpadding="4" cellspacing="1" width="45%">
 		  		<tr>
