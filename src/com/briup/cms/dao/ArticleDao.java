@@ -1,12 +1,12 @@
-package com.briup.cms.dao;
+package com.mall.cn.dao;
 
 import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import com.briup.cms.bean.Article;
-import com.briup.cms.common.HibernateSessionFactory;
+import com.mall.cn.bean.Article;
+import com.mall.cn.common.util.HibernateSessionFactory;
 
 public class ArticleDao  {
 	
