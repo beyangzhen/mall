@@ -1,4 +1,4 @@
-package com.briup.cms.common;
+package com.mall.cn.common.util;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
