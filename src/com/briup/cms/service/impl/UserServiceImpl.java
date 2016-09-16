@@ -1,13 +1,13 @@
-package com.briup.cms.service.impl;
+package com.mall.cn.service.impl;
 
 import java.util.List;
 
 import org.hibernate.Session;
 
-import com.briup.cms.bean.User;
-import com.briup.cms.common.HibernateSessionFactory;
-import com.briup.cms.dao.UserDao;
-import com.briup.cms.service.IUserService;
+import com.mall.cn.bean.User;
+import com.mall.cn.common.util.HibernateSessionFactory;
+import com.mall.cn.dao.UserDao;
+import com.mall.cn.service.IUserService;
 
 public class UserServiceImpl implements IUserService {
 	UserDao userDao;
@@ -61,6 +61,17 @@ public class UserServiceImpl implements IUserService {
 		session.beginTransaction();
 		
 		userDao.deleteById(id);
+		
+		session.getTransaction().commit();
+		session.close(); //可能包延迟加载异常
+	}
+	
+	@Override
+	public void update(User user) {
+		Session session = HibernateSessionFactory.getSession();
+		session.beginTransaction();
+		
+		userDao.update(user);
 		
 		session.getTransaction().commit();
 		session.close(); //可能包延迟加载异常
