@@ -21,10 +21,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript">
 		function check(form) {
 			if(form.username.value == "") {
-				alert("请输入账户名！");form.username.focus();return false;
+				alert("请输入账户名！");form.username.focus();
+				
+				return false;
 			}
 			if(form.password.value == "") {
-				alert("请输入密码！");form.password.focus();return false;
+				alert("请输入密码！");form.password.focus();
+				
+				return false;
 			}
 		}
 	</script>
@@ -33,15 +37,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body style="background-image:url(theme/1/images/front/login_bg.jpg); background-repeat: no-repeat;">
   	<div id="navigate">
   		<ul>
-  			<li id="li"><a id="navigate_item" style="margin-top:10px;" href="main.jsp">首页</a></li>
+  			<li id="li"><a id="navigate_item" style="margin-top:10px; color:white; font-weight:bold;" href="toIndex.action">首页</a></li>
   		</ul>
   	</div>
   	<div id="login">
 		<form name="form1" action="login.action" method="post">
 		    <ul login style="margin-top:60px;">
 		    	<li login>账户名：<input name="username" type="text" size="18" style="height:26px"></li>
-		    	<li login>密&nbsp;&nbsp;&nbsp;码：<input name="password" type="password" size="18" style="height:26px"></li>
-		    	<li login><a form href="register.jsp" style="margin-left:160px;">免费注册</a></li>
+		    	<li login>密&nbsp;码：<input name="password" type="password" size="18" style="height:26px"></li>
+		    	<li login><a form href="toRegister.action" style="margin-left:160px;">免费注册</a></li>
 		    	<li login><input name="submit1" type="submit" value="登&#9;录" id="loginButton" onclick="return check(form1);"><br><br>
 		    		<input name="submit3" type="reset" value="重置" id="resetButton">&nbsp;
 		    		<input name="submit4" type="button" value="关闭" onClick="window.close();" id="closeButton"></li>
