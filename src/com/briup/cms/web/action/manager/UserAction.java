@@ -1,15 +1,13 @@
-package com.briup.cms.web.action.manager;
+package com.mall.cn.web.action.manager;
 
 import java.util.List;
 
 import org.apache.struts2.convention.annotation.Action;
-import org.apache.struts2.convention.annotation.InterceptorRef;
-import org.apache.struts2.convention.annotation.InterceptorRefs;
 import org.apache.struts2.convention.annotation.Result;
 
-import com.briup.cms.bean.User;
-import com.briup.cms.service.IUserService;
-import com.briup.cms.service.impl.UserServiceImpl;
+import com.mall.cn.bean.User;
+import com.mall.cn.service.IUserService;
+import com.mall.cn.service.impl.UserServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class UserAction extends ActionSupport {
@@ -18,6 +16,9 @@ public class UserAction extends ActionSupport {
 	private String username;
 	private String password;
 	private String level; //M为管理员，C为顾客
+	private String phone; 	
+	private String address;
+	private double account;
 	private List<User> userList;
 	
 	private IUserService userService = new UserServiceImpl();
@@ -54,6 +55,9 @@ public class UserAction extends ActionSupport {
 		user.setUsername(username);
 		user.setPassword(password);
 		user.setLevel(level);
+		user.setPhone(phone);
+		user.setAddress(address);
+		user.setAccount(account);
 		userService.add(user);
 	}
 	
@@ -95,6 +99,30 @@ public class UserAction extends ActionSupport {
 
 	public void setLevel(String level) {
 		this.level = level;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public double getAccount() {
+		return account;
+	}
+
+	public void setAccount(double account) {
+		this.account = account;
 	}
 
 	public List<User> getUserList() {
