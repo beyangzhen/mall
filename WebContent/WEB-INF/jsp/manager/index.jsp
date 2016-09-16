@@ -42,7 +42,7 @@ $(function(){
 						<li url="toAddCategory.action"><a href="#"><em class="base_basicset"></em><span>添加栏目</span></a></li>
 						<li url="toCategoryManager.action"><a href="#"><em class="base_userset"></em><span>栏目管理</span></a></li>
 						<br/>
-						<li url="../toList.action"><a href="#"><em class="base_userset"></em><span>商品类型管理</span></a></li>
+						<li url="../toList.action"><a href="#"><em class="base_userset"></em><span>商品管理</span></a></li>
 						<br/>
 						<li url="toAddArticle.action"><a href="#"><em class="base_roll"></em><span>信息发布</span></a></li>
 						<li url="toArticleManager.action"><a href="#"><em class="base_sys"></em><span>信息管理</span></a></li>
