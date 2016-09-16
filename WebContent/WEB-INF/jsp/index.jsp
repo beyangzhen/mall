@@ -20,7 +20,7 @@
     <!-- 内容栏 -->
 	<div id="content" style="x-index:1;">
 		<div style="font-weight: bold; margin-top:15px;"><font size="4px">特色市场&nbsp;</font><font size="5px" color="lightgray">FEATURED CHANNEL</font></div>
-			<span style="background-color:white;"><img src="theme/1/images/front/coat_1.jpg" style="width:200px; height:220px;"></span>
+			<span style="background-color:white;"><img src="theme/1/images/front/coat_01.jpg" style="width:200px; height:220px;"></span>
 			<span style="background-color:white;"><img src="theme/1/images/front/t-shirt_1.jpg" style="width:200px; height:220px;"></span>
 			<span style="background-color:white;"><img src="theme/1/images/front/shoe_1.jpg" style="width:200px; height:220px;"></span>
 			<span style="background-color:white;"><img src="theme/1/images/front/bag_1.jpg" style="width:200px; height:220px;"></span>
@@ -28,13 +28,13 @@
 			<span style="background-color:white;"><img src="theme/1/images/front/foodstuff_1.jpg" style="width:200px; height:220px;"></span>
 		<div style="font-weight: bold; margin-top:15px;"><font size="4px">热门品牌&nbsp;</font><font size="5px" color="lightgray">HOT BRAND</font></div>
 			<div style="background-color:white;">
-				<a href="toIndex.action"><img src="theme/1/images/front/UNIQLO.jpg"></a>
-				<a href="toIndex.action"><img src="theme/1/images/front/NB.jpg"></a>
-				<a href="toIndex.action"><img src="theme/1/images/front/NIKE.jpg"></a>
-				<a href="toIndex.action"><img src="theme/1/images/front/ADIDAS.jpg"></a>
-				<a href="toIndex.action"><img src="theme/1/images/front/APPLE.jpg"></a>
-				<a href="toIndex.action"><img src="theme/1/images/front/SAMSUNG.jpg"></a>
-				<a href="toIndex.action"><img src="theme/1/images/front/Microsoft.jpg"></a>
+				<a href="toIndex.action"><img src="theme/1/images/front/UNIQLO.jpg" style="width:150px; height:80px;"></a>
+				<a href="toIndex.action"><img src="theme/1/images/front/NB.jpg" style="width:150px; height:80px;"></a>
+				<a href="toIndex.action"><img src="theme/1/images/front/NIKE.jpg" style="width:150px; height:80px;"></a>
+				<a href="toIndex.action"><img src="theme/1/images/front/ADIDAS.jpg" style="width:150px; height:80px;"></a>
+				<a href="toIndex.action"><img src="theme/1/images/front/APPLE.jpg" style="width:150px; height:80px;"></a>
+				<a href="toIndex.action"><img src="theme/1/images/front/SAMSUNG.jpg" style="width:150px; height:80px;"></a>
+				<a href="toIndex.action"><img src="theme/1/images/front/Microsoft.jpg" style="width:150px; height:80px;"></a>
 			</div>
 		<div style="font-weight: bold; margin-top:15px;"><font size="4px">热门市场&nbsp;</font><font size="5px" color="lightgray">HOT CHANNEL</font></div>
  			<div style="background-color:white; height: 100px;">
