@@ -14,17 +14,23 @@
 </style>
 <h1>用户信息</h1>
 <hr>
-<table  border="1" style="width: 100%;border-collapse: collapse;margin-top: 10px" >
+<table  border="1" style="width:100%; border-collapse:collapse; margin-top:10px" >
 	<tr>
 		<th>编号</th>
-		<th>用户名称</th>
-		<th>用户密码</th>
-		<th>用户级别</th>
+		<th>名称</th>
+		<th>密码</th>
+		<th>级别</th>
+		<th>电话</th>
+		<th>地址</th>
+		<th>账户金额</th>
 	</tr>
 	<tr>
-		<td><input type="checkbox" value="${user.id }"/></td>
+		<td>${user.id }</td>
 		<td>${user.username }</td>
 		<td>${user.password }</td>
 		<td>${user.level }</td>
+		<td>${user.phone }</td>
+		<td>${user.address }</td>
+		<td>￥${user.account }</td>
 	</tr>
 </table>
