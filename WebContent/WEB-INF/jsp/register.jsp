@@ -92,25 +92,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  		</tr>
 		  		<tr>
 		  			<td width="21%" style="background-color:#F3F6FA;">用户名</td>
-		  			<td style="background-color:#F3F6FA;"><input id="userid" name="username" type="text" size="25" maxlength="25" onblur="validate()">
-		  				<span id="usermsg"></span></td>
+		  			<td style="background-color:#F3F6FA;">
+		  				<input id="userid" name="username" type="text" placeholder="请输入用户名" size="25" maxlength="25" onblur="validate()">
+		  				<span id="usermsg"></span>
+		  			</td>
 		  		</tr>
 		  		<tr>
 		  			<td style="background-color:#F3F6FA;">密&nbsp;码</td>
-		  			<td style="background-color:#F3F6FA;"><input name="password" type="text" size="25" maxlength="25"></td>
+		  			<td style="background-color:#F3F6FA;">
+		  				<input name="password" type="text" placeholder="请输入密码" size="25" maxlength="25">
+		  			</td>
 		  		</tr>
 		  		<tr>
 		  			<td style="background-color:#F3F6FA;">密码确认</td>
-		  			<td style="background-color:#F3F6FA;"><input name="password2" type="text" size="25" maxlength="25" onblur="check(register)">
-		  				<span id="pwdmsg"></span></td>
+		  			<td style="background-color:#F3F6FA;">
+		  				<input name="password2" type="text" placeholder="请再次输入密码" size="25" maxlength="25" onblur="check(register)">
+		  				<span id="pwdmsg"></span>
+		  			</td>
 		  		</tr>
 		  		<tr>
 		  			<td style="background-color:#F3F6FA;">电话</td>
-		  			<td style="background-color:#F3F6FA;"><input name="phone" type="text" size="25" maxlength="25"></td>
+		  			<td style="background-color:#F3F6FA;">
+		  				<input name="phone" type="text" placeholder="请输入电话号码" size="25" maxlength="25">
+		  			</td>
 		  		</tr>
 		  		<tr>
 		  			<td valign="top" style="background-color:#F3F6FA;">送货地址</td>
-		  			<td style="background-color:#F3F6FA"; color:#000000;"><textarea name="address" cols="60" rows="5"></textarea></td>
+		  			<td style="background-color:#F3F6FA"; color:#000000;">
+		  				<textarea name="address" placeholder="请输入送货地址" cols="60" rows="5"></textarea>
+		  			</td>
 		  		</tr>
 		  	</table><br>
 		  	<center><input name="submit" type="submit" value="提&nbsp;交" id="registerButton"></center>	
