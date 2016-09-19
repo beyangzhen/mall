@@ -21,6 +21,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	<link rel="stylesheet" type="text/css" href="theme/1/css/front/styles.css">
 	
+	<link rel="icon" href="theme/1/images/icon/favicon.ico">
+	
 	<script type="text/javascript">
 		var count;  // 购买数量
 		var amount; // 库存
