@@ -8,6 +8,9 @@
 <link rel="stylesheet" type="text/css" href="theme/1/css/common.css">
 <link rel="stylesheet" type="text/css" href="theme/1/css/front/style.css">
 <link rel="stylesheet" type="text/css" href="theme/1/css/front/styles.css">
+
+<link rel="icon" href="theme/1/images/icon/favicon.ico">
+
 <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
 
 </head>
