@@ -20,7 +20,7 @@
 $(function(){
 	$(".baseUI li").on("click",function(){
 		var url = $(this).attr("url");
-		$(".right").load(url);		
+		$(".right").load(url);	// spa架构  	
 	});
 });
 </script>
