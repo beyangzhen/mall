@@ -1,6 +1,7 @@
 package com.mall.cn.web.action;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,17 +35,20 @@ public class BaseAction extends ActionSupport {
 	private String password;
 	private List<Category> categoryList;
 	private List<Goods> goodsList;
-	
 	private Goods goods;
+	
+	private String goUrl; // 上一个页面的url
 	
 	private IUserService userService = new UserServiceImpl();
 	private ICategoryService categoryService = new CategoryServiceImpl();
 	private IGoodsService goodsService = new GoodsServiceImpl();
 	
-	//action中获取session对象
+	// action中获取session对象
 	HttpServletRequest request = ServletActionContext.getRequest();
+	
 	HttpSession session = request.getSession();
 	
+
 	/**
 	 * 跳转到首页
 	 * ip:port/项目名称/命名空间/url
@@ -52,7 +56,7 @@ public class BaseAction extends ActionSupport {
 	 * */
 	@Action(value="toIndex",results={
 			@Result(name="success",location="/WEB-INF/jsp/index.jsp")})
-	public String toIndex(){
+	public String toIndex() {
 		System.out.println("hello---toIndex");
 		// 调用service层的方法查询所有的栏目信息，并且将这些值赋给categoryList
 		categoryList = categoryService.list(); //为了每次页面跳转，首页都会显示导航的菜单
@@ -124,6 +128,23 @@ public class BaseAction extends ActionSupport {
 	@Action(value="toGoods", results={
 			@Result(name="success", location="/WEB-INF/jsp/coat_info.jsp")})
 	public String toGoods() throws UnsupportedEncodingException {
+		
+		// 保存当前页面的url信息（方便用户登录后可以回到此页面）
+ 		String goUrl = request.getRequestURI();
+ 		Enumeration<String> params = request.getParameterNames();
+ 		if(null != params) {
+ 			goUrl = goUrl.concat("?");
+ 			while(params.hasMoreElements()) {
+ 				String param = params.nextElement();
+ 				String urlParam = param + "=" + request.getParameter(param) + "&";
+ 				goUrl = goUrl.concat(urlParam);
+ 			}
+ 			goUrl = goUrl.substring(request.getContextPath().length(), goUrl.length() - 1);
+ 		}
+ 		// 保存(第一次访问) 或  更新(再次访问) session中goUrl的当前页面信息
+ 		request.getSession().setAttribute("goUrl", goUrl);
+		
+		
 		String name2 = new String(name.getBytes("ISO-8859-1"), "UTF-8");
 		goodsList = goodsService.findByName(name2);
 		
@@ -157,7 +178,8 @@ public class BaseAction extends ActionSupport {
 	 * 处理登录
 	 */
 	@Action(value="login", results={
-			@Result(name="success", location="/WEB-INF/jsp/index.jsp"),
+			@Result(name="index", location="/WEB-INF/jsp/index.jsp"),
+			@Result(name="goUrl", type="redirect", location="${goUrl}"), // 默认是 "转发" 的方式
 			@Result(name="error", location="/WEB-INF/jsp/loginFail.jsp")
 			})
 	public String login() {
@@ -170,7 +192,18 @@ public class BaseAction extends ActionSupport {
 			//将登陆的用户添加到session对象中保存
 			session.setAttribute("user", user2); // 登录过程中，全局都有用户信息
 			
-			return SUCCESS;
+			// 判断session中上一个url是否为空
+			String goUrl = (String)session.getAttribute("goUrl");
+			// 将goUrl设置到action的request域中，然后在location中使用el表达式获取
+			this.setGoUrl(goUrl); 
+			
+			if(null != goUrl) {
+				// 登录后回到之前的页面
+				return "goUrl";
+			} else {
+				// 用户直接访问登录页面时，转到首页
+				return "index";
+			}
 		} else {
 			return ERROR;
 		}
@@ -202,7 +235,7 @@ public class BaseAction extends ActionSupport {
 	public String pay() {
 		// 判断是否重复提交，支付表单
 		boolean b = isRepeatSubmit(request);
-        if(b == true){
+        if(b == true) {
             return ERROR;
         }
         request.getSession().removeAttribute("token"); // 移除session中的token
@@ -343,4 +376,12 @@ public class BaseAction extends ActionSupport {
 		this.goods = goods;
 	}
 
+	public String getGoUrl() {
+		return goUrl;
+	}
+
+	public void setGoUrl(String goUrl) {
+		this.goUrl = goUrl;
+	}
+	
 }
