@@ -54,7 +54,7 @@ public class BaseAction extends ActionSupport {
 	 * ip:port/项目名称/命名空间/url
 	 * http://localhost:8888/cms/toIndex.action
 	 * */
-	@Action(value="toIndex",results={
+	@Action(value="toIndex", results={
 			@Result(name="success",location="/WEB-INF/jsp/index.jsp")})
 	public String toIndex() {
 		System.out.println("hello---toIndex");
@@ -249,7 +249,7 @@ public class BaseAction extends ActionSupport {
 			userService.update(user);
 		}
 		// 修改购买后，商品数量
-		goods = goodsService.findById(id);
+		goods = goodsService.findById(id); // 需要使用get()，否则可能存在session懒加载错误
 		goods.setAmount(goods.getAmount() - count);
 		goodsService.update(goods);
 		
