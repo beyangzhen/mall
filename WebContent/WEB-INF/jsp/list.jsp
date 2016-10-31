@@ -16,7 +16,7 @@
            <div class="conlist">
                 <div class="search_result">
                    	<div class="art_box">
-                        <div class="art_img"><a href="#"><img src="../theme/1/images/front/coat_1.jpg"></a></div>
+                        <div class="art_img"><a href="#"><img src="../theme/1/images/front/coat_01.jpg"></a></div>
                            <div class="art_txt">
 	                           <div class="title">网上商城<span class="icon_pen"></span></div>
 	                               <div class="tag_txt">
