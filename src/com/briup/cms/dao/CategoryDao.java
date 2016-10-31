@@ -60,7 +60,7 @@ public class CategoryDao {
 		Session session = getSession();
 		
 		// 注意延迟加载的问题（使用get()解决）
-		Category category = (Category)session.load(Category.class, id);
+		Category category = (Category)session.get(Category.class, id);
 		
 		return category;
 	}
