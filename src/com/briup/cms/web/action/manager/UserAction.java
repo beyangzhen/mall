@@ -21,6 +21,8 @@ public class UserAction extends ActionSupport {
 	private double account;
 	private List<User> userList;
 	
+	private User user;
+	
 	private IUserService userService = new UserServiceImpl();
 	
 	/**
@@ -30,6 +32,18 @@ public class UserAction extends ActionSupport {
 			@Result(name="success",location="/WEB-INF/jsp/manager/addUser.jsp")
 			})
 	public String toAddUser() {
+		return SUCCESS;
+	}
+	
+	/**
+	 * 跳转到修改用户页面
+	 * */
+	@Action(value="toUpdUser", results={
+			@Result(name="success",location="/WEB-INF/jsp/manager/updUser.jsp")})
+	public String toUpdUser() {
+		//调用service层的方法通过id查询要修改用户的信息
+		user = userService.findById(id);
+		
 		return SUCCESS;
 	}
 	
@@ -67,6 +81,21 @@ public class UserAction extends ActionSupport {
 	@Action(value="delUser")
 	public void delUser(){
 		userService.delete(id);
+	}
+	
+	/**
+	 * 修改用户
+	 * */
+	@Action(value="updUser")
+	public void updUser(){
+		//将接收到的参数进行封装，封装为一个对象
+		User user = new User();
+		user.setId(id);
+		user.setUsername(username);
+		user.setPassword(password);
+		user.setLevel(level);
+		//调用sercice层的服务，完成修改用户的功能
+		userService.update(user);
 	}
 	
 	public Long getId() {
@@ -131,6 +160,14 @@ public class UserAction extends ActionSupport {
 
 	public void setUserList(List<User> userList) {
 		this.userList = userList;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 }
