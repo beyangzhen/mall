@@ -43,7 +43,7 @@ public class UserServiceImpl implements IUserService {
 	}
 	
 	@Override
-	public User find(User user) {
+	public User findByUser(User user) {
 		Session session = HibernateSessionFactory.getSession();
 		session.beginTransaction();
 		
@@ -53,6 +53,19 @@ public class UserServiceImpl implements IUserService {
 		session.close(); //可能包延迟加载异常
 		
 		return user2;
+	}
+	
+	@Override
+	public User findById(long id) {
+		Session session = HibernateSessionFactory.getSession();
+		session.beginTransaction();
+		
+		User user = userDao.findById(id);
+		
+		session.getTransaction().commit();
+		session.close(); //可能包延迟加载异常
+		
+		return user;
 	}
 
 	@Override
