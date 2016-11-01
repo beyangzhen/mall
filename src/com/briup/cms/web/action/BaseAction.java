@@ -186,7 +186,7 @@ public class BaseAction extends ActionSupport {
 		User user = new User();
 		user.setUsername(username);
 		user.setPassword(password);
-		User user2 = userService.find(user);
+		User user2 = userService.findByUser(user);
 		if(user2.getPassword().equals(password)) {
 			categoryList = categoryService.list(); // 为了每次页面跳转，首页都会显示导航的菜单
 			//将登陆的用户添加到session对象中保存
