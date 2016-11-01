@@ -61,6 +61,18 @@ public class UserDao {
 		
 		return user2;
 	}
+	
+	/**
+	 * 通过id查询
+	 * */
+	public User findById(long id){
+		Session session = getSession();
+		
+		// 注意延迟加载的问题（使用get()解决）
+		User user = (User)session.get(User.class, id);
+		
+		return user;
+	}
 
 	/**
 	 * 修改
