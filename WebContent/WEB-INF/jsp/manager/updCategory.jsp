@@ -8,7 +8,7 @@ $(function(){
 	form.on("submit",function(){
 		form.ajaxSubmit(function(){
 			alert("修改成功！");
-			//模拟点击栏目管理
+			// 修改完成后，自动跳转回栏目管理页面（模拟点击）
 			$(".baseUI li :contains('栏目管理')").trigger("click");
 		});
 		
