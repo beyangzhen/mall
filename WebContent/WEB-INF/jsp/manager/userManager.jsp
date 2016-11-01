@@ -38,16 +38,17 @@
 <script>
 $(function(){
 	$(".upd").off();
-	$(".upd").on("click",function(){
-		alert("功能未完善");
+	$(".upd").on("click", function(){
+		var id = $(this).attr("val");
+		$(".right").load("toUpdUser.action", {id:id});
 	});
 	
 	$(".del").off();
-	$(".del").on("click",function(){
+	$(".del").on("click", function(){
 		var id = $(this).attr("val");
 		var flag = confirm("确认删除吗？");
 		if(flag) {
-			$.post("delUser.action",{id:id},function(){
+			$.post("delUser.action", {id:id}, function(){
 				//模拟点击(删除后页面刷新)
 				$(".baseUI li :contains('用户管理')").trigger("click");
 			});
