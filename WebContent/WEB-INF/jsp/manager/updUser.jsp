@@ -24,5 +24,7 @@ $(function(){
 	用户名称:<input type="text" name="username" value="${user.username }"/><br/>
 	用户密码:<input type="text" name="password" value="${user.password }"/><br/>
 	用户级别:<input type="text" name="level" value="${user.level }"/><br/>
+	用户电话:<input type="text" name="phone" value="${user.phone }"/><br/>
+	用户地址:<input type="text" name="address" value="${user.address }"/><br/>
 	<input type="submit" value="提交"/><br/>
 </form>
