@@ -23,12 +23,12 @@
     <!-- 内容栏 -->
 	<div id="content" style="x-index:1;">
 		<div style="font-weight: bold; margin-top:15px;"><font size="4px">特色市场&nbsp;</font><font size="5px" color="lightgray">FEATURED CHANNEL</font></div>
-			<span style="background-color:white;"><img src="theme/1/images/front/coat_01.jpg" style="width:200px; height:220px;"></span>
-			<span style="background-color:white;"><img src="theme/1/images/front/t-shirt_1.jpg" style="width:200px; height:220px;"></span>
-			<span style="background-color:white;"><img src="theme/1/images/front/shoe_1.jpg" style="width:200px; height:220px;"></span>
-			<span style="background-color:white;"><img src="theme/1/images/front/bag_1.jpg" style="width:200px; height:220px;"></span>
-			<span style="background-color:white;"><img src="theme/1/images/front/computer_1.jpg" style="width:200px; height:220px;"></span>
-			<span style="background-color:white;"><img src="theme/1/images/front/foodstuff_1.jpg" style="width:200px; height:220px;"></span>
+			<a href="${pageContext.request.contextPath}/toGoods.action?name=外套01"><span style="background-color:white;"><img src="theme/1/images/front/coat_01.jpg" style="width:200px; height:220px;"></span></a>
+			<a href="toIndex.action"><span style="background-color:white;"><img src="theme/1/images/front/t-shirt_1.jpg" style="width:200px; height:220px;"></span></a>
+			<a href="toIndex.action"><span style="background-color:white;"><img src="theme/1/images/front/shoe_1.jpg" style="width:200px; height:220px;"></span></a>
+			<a href="toIndex.action"><span style="background-color:white;"><img src="theme/1/images/front/bag_1.jpg" style="width:200px; height:220px;"></span></a>
+			<a href="toIndex.action"><span style="background-color:white;"><img src="theme/1/images/front/computer_1.jpg" style="width:200px; height:220px;"></span></a>
+			<a href="toIndex.action"><span style="background-color:white;"><img src="theme/1/images/front/foodstuff_1.jpg" style="width:200px; height:220px;"></span></a>
 		<div style="font-weight: bold; margin-top:15px;"><font size="4px">热门品牌&nbsp;</font><font size="5px" color="lightgray">HOT BRAND</font></div>
 			<div style="background-color:white;">
 				<a href="toIndex.action"><img src="theme/1/images/front/UNIQLO.jpg" style="width:150px; height:80px;"></a>
