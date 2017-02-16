@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-	<link rel="stylesheet" type="text/css" href="theme/1/css/front/styles.css">
-	<link rel="icon" href="theme/1/images/icon/favicon.ico">
+	<title>用户信息</title>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/theme/1/css/front/styles.css">
+	<link rel="icon" href="${pageContext.request.contextPath}/theme/1/images/icon/favicon.ico">
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.2.min.js"></script>
 	<style>
 		th{
 			background: lightblue;
@@ -18,7 +20,7 @@
 	<hr>
 	<div id="navigate">
   		<ul>
-  			<li id="li"><a id="navigate_item" style="margin-top:10px; color:white; font-weight:bold;" href="toIndex.action">首页</a></li>
+  			<li id="li"><a id="navigate_item" style="margin-top:10px; color:white; font-weight:bold;" href="${pageContext.request.contextPath}/toIndex.action">首页</a></li>
   		</ul>
   	</div>
 	<table  border="1" style="width:100%; border-collapse:collapse; margin-top:10px" >
@@ -33,11 +35,32 @@
 		</tr>
 		<tr>
 			<td>${user.id }</td>
-			<td>${user.username }</td>
+			<td class="baseUI"><a href="toUserInfor.action?username=${sessionScope.user.username }">${user.username }</a></td>
 			<td>${user.password }</td>
-			<td>${user.level }</td>
+			<td>
+				<c:if test="${user.level == 'M'}">管理员(M)</c:if>
+				<c:if test="${user.level == 'C'}">大众会员(C)</c:if>
+			</td>
 			<td>${user.phone }</td>
 			<td>${user.address }</td>
-			<td>￥${user.account }</td>
+			<td>
+				￥${user.account }<a href="javascript:void(0);" val="${user.id }" style="color:red; padding-left:8px;" class="rechar">充值</a>
+			</td>
 		</tr>
 	</table>
+	<!-- 账户充值页面 -->
+	<div class="recharge" style="padding:30px">
+			
+	</div>
+	<script>
+		// jquery 入口
+		$(function() { 
+			$(".rechar").off();
+			$(".rechar").on("click", function(){
+				var id = $(this).attr("val");
+				$(".recharge").load("${pageContext.request.contextPath}/manager/toRechargeUser.action", {id:id})
+			});
+			
+		});
+	
+	</script>
