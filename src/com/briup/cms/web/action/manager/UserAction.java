@@ -1,7 +1,13 @@
 package com.mall.cn.web.action.manager;
 
+import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 
@@ -10,60 +16,71 @@ import com.mall.cn.service.IUserService;
 import com.mall.cn.service.impl.UserServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
 
+
 public class UserAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	private Long id;
 	private String username;
 	private String password;
-	private String level; //M为管理员，C为顾客
-	private String phone; 	
+	private String level; // M为管理员，C为大众会员
+	private String phone;
 	private String address;
-	private double account;
+	private double account; // 账户余额
+	private Integer money; // 账户充值金额
 	private List<User> userList;
-	
+
 	private User user;
-	
+
 	private IUserService userService = new UserServiceImpl();
-	
+
+	// action中获取session对象
+	HttpServletRequest request = ServletActionContext.getRequest();
+	HttpServletResponse response = ServletActionContext.getResponse();
+	HttpSession session = request.getSession();
+
 	/**
 	 * 跳转到添加用户界面
 	 */
-	@Action(value="toAddUser", results={
-			@Result(name="success",location="/WEB-INF/jsp/manager/addUser.jsp")
-			})
+	@Action(value = "toAddUser", results = { @Result(name = "success", location = "/WEB-INF/jsp/manager/addUser.jsp") })
 	public String toAddUser() {
 		return SUCCESS;
 	}
-	
+
 	/**
 	 * 跳转到修改用户页面
-	 * */
-	@Action(value="toUpdUser", results={
-			@Result(name="success",location="/WEB-INF/jsp/manager/updUser.jsp")})
+	 */
+	@Action(value = "toUpdUser", results = { @Result(name = "success", location = "/WEB-INF/jsp/manager/updUser.jsp") })
 	public String toUpdUser() {
-		//调用service层的方法通过id查询要修改用户的信息
+		// 调用service层的方法通过id查询要修改用户的信息
 		user = userService.findById(id);
-		
+
 		return SUCCESS;
 	}
-	
+
+	/**
+	 * 跳转到账户充值界面
+	 */
+	@Action(value = "toRechargeUser", results = { @Result(name = "success", location = "/WEB-INF/jsp/recharge.jsp") })
+	public String toRechargeUser() {
+		return SUCCESS;
+	}
+
 	/**
 	 * 跳转到用户管理页面
-	 * */
-	@Action(value="toUserManager", results={
-			@Result(name="success",location="/WEB-INF/jsp/manager/userManager.jsp")
-			})
-	public String toUserManager(){
-		//调用service层的方法查询所有的栏目信息，并且将这些值赋给categoryList
+	 */
+	@Action(value = "toUserManager", results = {
+			@Result(name = "success", location = "/WEB-INF/jsp/manager/userManager.jsp") })
+	public String toUserManager() {
+		// 调用service层的方法查询所有的栏目信息，并且将这些值赋给categoryList
 		userList = userService.list();
-		
-		return SUCCESS;//"success"
+
+		return SUCCESS;// "success"
 	}
-	
+
 	/**
 	 * 添加用户
 	 */
-	@Action(value="addUser")
+	@Action(value = "addUser")
 	public void addUser() {
 		User user = new User();
 		user.setUsername(username);
@@ -74,30 +91,50 @@ public class UserAction extends ActionSupport {
 		user.setAccount(account);
 		userService.add(user);
 	}
-	
+
 	/**
 	 * 删除用户
-	 * */
-	@Action(value="delUser")
-	public void delUser(){
+	 */
+	@Action(value = "delUser")
+	public void delUser() {
 		userService.delete(id);
 	}
-	
+
 	/**
 	 * 修改用户
-	 * */
-	@Action(value="updUser")
-	public void updUser(){
-		//将接收到的参数进行封装，封装为一个对象
+	 */
+	@Action(value = "updUser")
+	public void updUser() {
+		// 将接收到的参数封装为一个对象
 		User user = new User();
 		user.setId(id);
 		user.setUsername(username);
 		user.setPassword(password);
 		user.setLevel(level);
-		//调用sercice层的服务，完成修改用户的功能
+		// 调用sercice层的服务，完成修改用户的功能
 		userService.update(user);
+		// 同时修改session中的值
+		session.setAttribute("user", user);
 	}
-	
+
+	/**
+	 * 账户充值（1、前台充值后返回userInfor.jsp 2、后台充值返回userInfor.jsp后，还会接着模拟点击'用户管理'按钮）
+	 * 
+	 * @throws IOException
+	 */
+	@Action(value = "rechargeUser", results = { @Result(name = "success", location = "/WEB-INF/jsp/userInfor.jsp") })
+	public String rechargeUser() throws IOException {
+		// 调用service层的方法通过id查询充值用户的信息
+		User u = userService.findById(id);
+		// 调用sercice层的服务，完成账户充值的功能
+		u.setAccount(u.getAccount() + money);
+		userService.recharge(u);
+		// 充值后同时修改session中的值
+		session.setAttribute("user", u);
+
+		return SUCCESS;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -154,6 +191,14 @@ public class UserAction extends ActionSupport {
 		this.account = account;
 	}
 
+	public Integer getMoney() {
+		return money;
+	}
+
+	public void setMoney(Integer money) {
+		this.money = money;
+	}
+
 	public List<User> getUserList() {
 		return userList;
 	}
@@ -169,5 +214,5 @@ public class UserAction extends ActionSupport {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+
 }
