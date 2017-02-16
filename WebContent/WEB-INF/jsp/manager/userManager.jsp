@@ -20,6 +20,9 @@
 		<th>用户名称</th>
 		<th>用户密码</th>
 		<th>用户级别</th>
+		<th>电话</th>
+		<th>地址</th>
+		<th>账户金额</th>
 		<th>操作</th>
 	</tr>
 	<c:forEach items="${userList }" var="u">
@@ -28,9 +31,13 @@
 		<td>${u.username }</td>
 		<td>${u.password }</td>
 		<td>${u.level }</td>
+		<td>${u.phone }</td>
+		<td>${u.address }</td>
+		<td>￥${u.account }</td>
 		<td>
 			<a href="javascript:void(0);" val="${u.id }" class="upd">修改</a>
 			<a href="javascript:void(0);" val="${u.id }" class="del">删除</a>
+			<a href="javascript:void(0);" val="${u.id }" style="color:red;" class="rechar">充值</a>
 		</td>
 	</tr>
 	</c:forEach>
@@ -53,6 +60,12 @@ $(function(){
 				$(".baseUI li :contains('用户管理')").trigger("click");
 			});
 		}
+	});
+	
+	$(".rechar").off();
+	$(".rechar").on("click", function(){
+		var id = $(this).attr("val");
+		$(".right").load("toRechargeUser.action", {id:id});
 	});
 });
 	
