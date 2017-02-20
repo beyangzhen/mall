@@ -29,6 +29,7 @@
 			<th>名称</th>
 			<th>密码</th>
 			<th>级别</th>
+			<th>当前积分</th>
 			<th>电话</th>
 			<th>地址</th>
 			<th>账户金额</th>
@@ -39,8 +40,11 @@
 			<td>${user.password }</td>
 			<td>
 				<c:if test="${user.level == 'M'}">管理员(M)</c:if>
+				<c:if test="${user.level == 'A'}">钻石会员(A)</c:if>
+				<c:if test="${user.level == 'B'}">黄金会员(B)</c:if>
 				<c:if test="${user.level == 'C'}">大众会员(C)</c:if>
 			</td>
+			<td>${user.score }</td>
 			<td>${user.phone }</td>
 			<td>${user.address }</td>
 			<td>
