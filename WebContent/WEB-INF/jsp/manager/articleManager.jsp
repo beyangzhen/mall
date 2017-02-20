@@ -31,8 +31,8 @@
 		<td>${a.publisurDate }</td>
 		<td>${a.clickTimes }</td>
 		<td>
-			<a href="javascript:void(0);" val="${a.id }" class="upd">修改</a>
-			<a href="javascript:void(0);" val="${a.id }" class="del">删除</a>
+			<a href="javascript:void(0);" val="${a.id }" style="color:green;" class="upd">修改</a>
+			<a href="javascript:void(0);" val="${a.id }" style="color:green;" class="del">删除</a>
 		</td>
 	</tr>
 	</c:forEach>
