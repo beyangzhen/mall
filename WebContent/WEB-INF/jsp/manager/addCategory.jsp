@@ -1,4 +1,4 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- jquery  jquery.form 异步提交 -->
 <script>
@@ -18,9 +18,9 @@ $(function(){
 });
 </script>
 <h1>添加栏目</h1>
-<hr>
+<hr><br/>
 <form action="addCategory.action" method="post" id="addCategoryForm">
-	栏目名称:<input type="text" name="name"/><br/>
-	栏目编号:<input type="text" name="code"/><br/>
-	<input type="submit" value="添加"/><br/>
+	栏目名称:<input type="text" name="name"/><br/><br/>
+	栏目编号:<input type="text" name="code"/><br/><br/>
+	<input type="submit" style="background-color:#970102; width:110px; height:30px; color:white; font-size: 18px; font-weight:bold; margin-top:30px;" value="添加"/><br/>
 </form>
