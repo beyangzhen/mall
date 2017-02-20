@@ -23,5 +23,7 @@ $(function(){
 	用户名称:<input type="text" name="username"/><br/>
 	用户密码:<input type="text" name="password"/><br/>
 	用户级别:<input type="text" name="level"/><br/>
+	用户电话:<input type="text" name="phone"/><br/>
+	用户地址:<input type="text" name="address"/><br/>
 	<input type="submit" value="添加"/><br/>
 </form>
