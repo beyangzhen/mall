@@ -22,7 +22,15 @@ public class UserAction extends ActionSupport {
 	private Long id;
 	private String username;
 	private String password;
-	private String level; // M为管理员，C为大众会员
+	/**
+	 * 用户级别：M为管理员，A为钻石会员（>1500 积分），B为黄金会员（500~1500积分），C为大众会员（<500积分）。 M：折扣为 0.85，A：折扣为 0.85， B：折扣为
+	 * 0.9 ， C：折扣为 1
+	 */
+	private String level;
+	/**
+	 * 用户积分（每消费1元，增加1积分）
+	 */
+	private Integer score;
 	private String phone;
 	private String address;
 	private double account; // 账户余额
@@ -86,9 +94,17 @@ public class UserAction extends ActionSupport {
 		user.setUsername(username);
 		user.setPassword(password);
 		user.setLevel(level);
+		if ("M" == level) {
+			user.setScore(-1); // 管理员不存在积分
+		} else if ("A" == level) {
+			user.setScore(1500);
+		} else if ("B" == level) {
+			user.setScore(500);
+		} else if ("C" == level) {
+			user.setScore(0);
+		}
 		user.setPhone(phone);
 		user.setAddress(address);
-		user.setAccount(account);
 		userService.add(user);
 	}
 
@@ -111,6 +127,17 @@ public class UserAction extends ActionSupport {
 		user.setUsername(username);
 		user.setPassword(password);
 		user.setLevel(level);
+		if ("M" == level) {
+			user.setScore(-1); // 管理员不存在积分
+		} else if ("A" == level) {
+			user.setScore(1500);
+		} else if ("B" == level) {
+			user.setScore(500);
+		} else if ("C" == level) {
+			user.setScore(0);
+		}
+		user.setPhone(phone);
+		user.setAddress(address);
 		// 调用sercice层的服务，完成修改用户的功能
 		userService.update(user);
 		// 同时修改session中的值
@@ -165,6 +192,14 @@ public class UserAction extends ActionSupport {
 
 	public void setLevel(String level) {
 		this.level = level;
+	}
+
+	public Integer getScore() {
+		return score;
+	}
+
+	public void setScore(Integer score) {
+		this.score = score;
 	}
 
 	public String getPhone() {
