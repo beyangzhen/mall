@@ -35,8 +35,8 @@
 		<td>${u.address }</td>
 		<td>￥${u.account }</td>
 		<td>
-			<a href="javascript:void(0);" val="${u.id }" class="upd">修改</a>
-			<a href="javascript:void(0);" val="${u.id }" class="del">删除</a>
+			<a href="javascript:void(0);" val="${u.id }" style="color:green;" class="upd">修改</a>
+			<a href="javascript:void(0);" val="${u.id }" style="color:green;" class="del">删除</a>
 			<a href="javascript:void(0);" val="${u.id }" style="color:red;" class="rechar">充值</a>
 		</td>
 	</tr>
