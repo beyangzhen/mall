@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2016-09-10 15:19:35
+Date: 2017-02-20 16:14:38
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -73,12 +73,12 @@ CREATE TABLE `t_goods` (
   PRIMARY KEY (`id`),
   KEY `c_id` (`c_id`),
   CONSTRAINT `t_goods_ibfk_1` FOREIGN KEY (`c_id`) REFERENCES `t_category` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_goods
 -- ----------------------------
-INSERT INTO `t_goods` VALUES ('1', '外套01', '399', 'S', '100', '外套', '1');
+INSERT INTO `t_goods` VALUES ('1', '外套01', '399', 'S', '88', '外套', '1');
 INSERT INTO `t_goods` VALUES ('2', '外套01', '399', 'M', '100', '外套', '1');
 INSERT INTO `t_goods` VALUES ('3', '外套01', '399', 'L', '100', '外套', '1');
 INSERT INTO `t_goods` VALUES ('4', '外套01', '399', 'XL', '100', '外套', '1');
@@ -104,6 +104,7 @@ CREATE TABLE `t_user` (
   `username` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `level` varchar(255) DEFAULT NULL,
+  `score` int(11) DEFAULT NULL COMMENT '会员积分',
   `address` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
   `account` double NOT NULL,
@@ -113,6 +114,6 @@ CREATE TABLE `t_user` (
 -- ----------------------------
 -- Records of t_user
 -- ----------------------------
-INSERT INTO `t_user` VALUES ('1', '杨祯', '123', 'M', '南昌', '187', '10000');
-INSERT INTO `t_user` VALUES ('2', 'yangzhen', '123', 'C', '南昌', '187', '1000');
-INSERT INTO `t_user` VALUES ('3', 'yz', '123', 'C', '南昌', '187', '100');
+INSERT INTO `t_user` VALUES ('1', '杨祯', '123', 'M', '0', '江西省南昌市双港东大街', '18788888888', '11150');
+INSERT INTO `t_user` VALUES ('2', 'yangzhen', '123', 'C', '0', '江西省南昌市双港东大街', '18788888888', '1000');
+INSERT INTO `t_user` VALUES ('3', 'yz', '123', 'C', '0', '江西省南昌市双港东大街', '18788888888', '100');
