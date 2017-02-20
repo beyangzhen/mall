@@ -18,18 +18,18 @@ $(function(){
 
 </script>
 <h1>信息发布</h1>
-<hr>
+<hr><br/>
 <form action="addArticle.action" method="post" id="addArticleForm">
-	信息标题：	<input type="text" name="title"/><br/>
-	信息作者：	<input type="text" name="author"/><br/>
+	信息标题：	<input type="text" name="title"/><br/><br/>
+	信息作者：	<input type="text" name="author"/><br/><br/>
 	所属栏目：	<select name="c_id">
 				<option value="">-----请选择-----</option>
 				<c:forEach items="${categoryList }" var="c">
 					<option value="${c.id }">${c.name }</option>
 				</c:forEach>
-			</select><br/>
+			</select><br/><br/>
 	信息内容：
 			<textarea name="content" rows="5" cols="20"></textarea>
-			<br/>
-	<input type="submit" value="添加"/>
+			<br/><br/>
+	<input type="submit" style="background-color:#970102; width:110px; height:30px; color:white; font-size: 18px; font-weight:bold; margin-top:30px;" value="发布"/>
 </form>
