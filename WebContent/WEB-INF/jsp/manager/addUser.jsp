@@ -18,12 +18,12 @@ $(function(){
 
 </script>
 <h1>添加用户</h1>
-<hr>
+<hr><br/>
 <form action="addUser.action" method="post" id="addUserForm">
-	用户名称:<input type="text" name="username"/><br/>
-	用户密码:<input type="text" name="password"/><br/>
-	用户级别:<input type="text" name="level"/><br/>
-	用户电话:<input type="text" name="phone"/><br/>
-	用户地址:<input type="text" name="address"/><br/>
-	<input type="submit" value="添加"/><br/>
+	用户名称:<input type="text" name="username"/><br/><br/>
+	用户密码:<input type="text" name="password"/><br/><br/>
+	用户级别:<input type="text" name="level"/><font color="green" style="padding-left:10px;">温馨提示：M为管理员，A为钻石会员，B为黄金会员，C为大众会员</font><br/><br/>
+	用户电话:<input type="text" name="phone"/><br/><br/>
+	用户地址:<input type="text" name="address"/><br/><br/>
+	<input type="submit" style="background-color:#970102; width:110px; height:30px; color:white; font-size: 18px; font-weight:bold; margin-top:30px;" value="添加"/><br/><br/>
 </form>
