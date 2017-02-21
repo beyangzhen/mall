@@ -28,7 +28,7 @@ public class BaseAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	private Long id;
 	private String name;  // 商品名称
-	private String size; 
+	private String size;
 	private int count;    // 购买数量
 	private Double money; // 支付金额
 	private String username;
@@ -36,168 +36,150 @@ public class BaseAction extends ActionSupport {
 	private List<Category> categoryList;
 	private List<Goods> goodsList;
 	private Goods goods;
-	
+
 	private String goUrl; // 上一个页面的url
-	
+
 	private IUserService userService = new UserServiceImpl();
 	private ICategoryService categoryService = new CategoryServiceImpl();
 	private IGoodsService goodsService = new GoodsServiceImpl();
-	
+
 	// action中获取session对象
 	HttpServletRequest request = ServletActionContext.getRequest();
-	
+
 	HttpSession session = request.getSession();
-	
 
 	/**
-	 * 跳转到首页
-	 * ip:port/项目名称/命名空间/url
-	 * http://localhost:8888/cms/toIndex.action
-	 * */
-	@Action(value="toIndex", results={
-			@Result(name="success",location="/WEB-INF/jsp/index.jsp")})
+	 * 跳转到首页 ip:port/项目名称/命名空间/url http://localhost:8888/cms/toIndex.action
+	 */
+	@Action(value = "toIndex", results = { @Result(name = "success", location = "/WEB-INF/jsp/index.jsp") })
 	public String toIndex() {
 		System.out.println("hello---toIndex");
 		// 调用service层的方法查询所有的栏目信息，并且将这些值赋给categoryList
-		categoryList = categoryService.list(); //为了每次页面跳转，首页都会显示导航的菜单
-		
+		categoryList = categoryService.list(); // 为了每次页面跳转，首页都会显示导航的菜单
+
 		return "success";
 	}
-	
+
 	/**
 	 * 跳转到登录界面
 	 */
-	@Action(value="toLogin", results={
-			@Result(name="success",location="/WEB-INF/jsp/login.jsp")
-			})
+	@Action(value = "toLogin", results = { @Result(name = "success", location = "/WEB-INF/jsp/login.jsp") })
 	public String toLogin() {
 		return SUCCESS;
 	}
-	
+
 	/**
 	 * 跳转到注册界面
 	 */
-	@Action(value="toRegister", results={
-			@Result(name="success",location="/WEB-INF/jsp/register.jsp")
-			})
+	@Action(value = "toRegister", results = { @Result(name = "success", location = "/WEB-INF/jsp/register.jsp") })
 	public String toRegister() {
 		return SUCCESS;
 	}
-	
+
 	/**
 	 * 跳转到列表页
-	 * */
-	@Action(value="toList",results={
-			@Result(name="success",location="/WEB-INF/jsp/list.jsp")})
-	public String toList(){
+	 */
+	@Action(value = "toList", results = { @Result(name = "success", location = "/WEB-INF/jsp/list.jsp") })
+	public String toList() {
 		return "success";
 	}
-	
+
 	/**
 	 * 跳转到内容页
-	 * */
-	@Action(value="toContent",results={
-			@Result(name="success",location="/WEB-INF/jsp/content.jsp")})
-	public String toContent(){
+	 */
+	@Action(value = "toContent", results = { @Result(name = "success", location = "/WEB-INF/jsp/content.jsp") })
+	public String toContent() {
 		return "success";
 	}
-	
+
 	/**
 	 * 跳转到用户信息界面
 	 */
-	@Action(value="toUserInfor", results={
-			@Result(name="success",location="/WEB-INF/jsp/userInfor.jsp")})
+	@Action(value = "toUserInfor", results = { @Result(name = "success", location = "/WEB-INF/jsp/userInfor.jsp") })
 	public String toUserInfor() {
 		return SUCCESS;
 	}
-	
+
 	/**
 	 * 跳转到商品列表页面
 	 */
-	@Action(value="toGoodsList", results={
-			@Result(name="success", location="/WEB-INF/jsp/coat.jsp")})
+	@Action(value = "toGoodsList", results = { @Result(name = "success", location = "/WEB-INF/jsp/coat.jsp") })
 	public String toGoodsList() {
 		goodsList = goodsService.list();
-		
+
 		return SUCCESS;
 	}
-	
+
 	/**
 	 * 跳转到商品页面
 	 */
-	@Action(value="toGoods", results={
-			@Result(name="success", location="/WEB-INF/jsp/coat_info.jsp")})
+	@Action(value = "toGoods", results = { @Result(name = "success", location = "/WEB-INF/jsp/coat_info.jsp") })
 	public String toGoods() throws UnsupportedEncodingException {
-		
+
 		// 保存当前页面的url信息（方便用户登录后可以回到此页面）
- 		String goUrl = request.getRequestURI();
- 		Enumeration<String> params = request.getParameterNames();
- 		if(null != params) {
- 			goUrl = goUrl.concat("?");
- 			while(params.hasMoreElements()) {
- 				String param = params.nextElement();
- 				String urlParam = param + "=" + request.getParameter(param) + "&";
- 				goUrl = goUrl.concat(urlParam);
- 			}
- 			goUrl = goUrl.substring(request.getContextPath().length(), goUrl.length() - 1);
- 		}
- 		// 保存(第一次访问) 或  更新(再次访问) session中goUrl的当前页面信息
- 		request.getSession().setAttribute("goUrl", goUrl);
-		
-		
+		String goUrl = request.getRequestURI();
+		Enumeration<String> params = request.getParameterNames();
+		if (null != params) {
+			goUrl = goUrl.concat("?");
+			while (params.hasMoreElements()) {
+				String param = params.nextElement();
+				String urlParam = param + "=" + request.getParameter(param) + "&";
+				goUrl = goUrl.concat(urlParam);
+			}
+			goUrl = goUrl.substring(request.getContextPath().length(), goUrl.length() - 1);
+		}
+		// 保存(第一次访问) 或 更新(再次访问) session中goUrl的当前页面信息
+		request.getSession().setAttribute("goUrl", goUrl);
+
 		String name2 = new String(name.getBytes("ISO-8859-1"), "UTF-8");
 		goodsList = goodsService.findByName(name2);
-		
+
 		return SUCCESS;
 	}
-	
+
 	/**
 	 * 跳转到支付页面
 	 */
-	@Action(value="toPay", results={
-			@Result(name="success", location="/WEB-INF/jsp/pay.jsp")})
+	@Action(value = "toPay", results = { @Result(name = "success", location = "/WEB-INF/jsp/pay.jsp") })
 	public String toPay() {
 		// 将生成的token存入session中（用于检测是否重复提交）
-		String token = TokenProccessor.getInstance().makeToken(); //创建令牌
-        System.out.println("TokenProccessor中生成的token：" + token);
-        request.getSession().setAttribute("token", token); //在服务器使用session保存token(令牌)
+		String token = TokenProccessor.getInstance().makeToken(); // 创建令牌
+		System.out.println("TokenProccessor中生成的token：" + token);
+		request.getSession().setAttribute("token", token); // 在服务器使用session保存token(令牌)
 
-      
 		goodsList = goodsService.findByName(name);
 		// 筛选出购买的是哪个规格的商品
-		for(Goods g : goodsList) {
-			if(size.equals(g.getSize())) {
+		for (Goods g : goodsList) {
+			if (size.equals(g.getSize())) {
 				goods = g;
 			}
 		}
-		
+
 		return SUCCESS;
 	}
-	
+
 	/**
 	 * 处理登录
 	 */
-	@Action(value="login", results={
-			@Result(name="index", location="/WEB-INF/jsp/index.jsp"),
-			@Result(name="goUrl", type="redirect", location="${goUrl}"), // 默认是 "转发" 的方式
-			@Result(name="error", location="/WEB-INF/jsp/loginFail.jsp")
-			})
+	@Action(value = "login", results = { @Result(name = "index", location = "/WEB-INF/jsp/index.jsp"),
+			@Result(name = "goUrl", type = "redirect", location = "${goUrl}"), // 默认是 "转发" 的方式
+			@Result(name = "error", location = "/WEB-INF/jsp/loginFail.jsp") })
 	public String login() {
 		User user = new User();
 		user.setUsername(username);
 		user.setPassword(password);
 		User user2 = userService.findByUser(user);
-		if(user2.getPassword().equals(password)) {
+		if (user2.getPassword().equals(password)) {
 			categoryList = categoryService.list(); // 为了每次页面跳转，首页都会显示导航的菜单
-			//将登陆的用户添加到session对象中保存
+			// 将登陆的用户添加到session对象中保存
 			session.setAttribute("user", user2); // 登录过程中，全局都有用户信息
-			
+
 			// 判断session中上一个url是否为空
-			String goUrl = (String)session.getAttribute("goUrl");
+			String goUrl = (String) session.getAttribute("goUrl");
 			// 将goUrl设置到action的request域中，然后在location中使用el表达式获取
-			this.setGoUrl(goUrl); 
-			
-			if(null != goUrl) {
+			this.setGoUrl(goUrl);
+
+			if (null != goUrl) {
 				// 登录后回到之前的页面
 				return "goUrl";
 			} else {
@@ -208,12 +190,11 @@ public class BaseAction extends ActionSupport {
 			return ERROR;
 		}
 	}
-	
+
 	/**
 	 * 处理注册
 	 */
-	@Action(value="register", results={
-			@Result(name="success", location="/WEB-INF/jsp/login.jsp")})
+	@Action(value = "register", results = { @Result(name = "success", location = "/WEB-INF/jsp/login.jsp") })
 	public String register() {
 		User user = new User();
 		user.setUsername(username);
@@ -221,81 +202,96 @@ public class BaseAction extends ActionSupport {
 		user.setLevel("C");
 		userService.add(user);
 		System.out.println("恭喜您，注册成功！");
-	
+
 		return SUCCESS;
 	}
-	
+
 	/**
 	 * 处理支付
 	 */
-	@Action(value="pay", results={
-			@Result(name="success",location="/WEB-INF/jsp/paySuccess.jsp"),
-			@Result(name="error", location="/WEB-INF/jsp/error.jsp")
-			})
+	@Action(value = "pay", results = { @Result(name = "success", location = "/WEB-INF/jsp/paySuccess.jsp"),
+			@Result(name = "error", location = "/WEB-INF/jsp/error.jsp") })
 	public String pay() {
 		// 判断是否重复提交，支付表单
 		boolean b = isRepeatSubmit(request);
-        if(b == true) {
-            return ERROR;
-        }
-        request.getSession().removeAttribute("token"); // 移除session中的token
-        System.out.println("处理用户提交请求！！");
-		
-		
-		// 修改购买后，用户账户金额
-		User user = (User)session.getAttribute("user");
-		if(user != null) {
+		if (b == true) {
+			return ERROR;
+		}
+		request.getSession().removeAttribute("token"); // 移除session中的token
+		System.out.println("处理用户提交请求！！");
+
+		// 购买后，修改账户金额和提升会员积分(根据折扣前金额提升)和修改会员级别
+		User user = (User) session.getAttribute("user");
+		if (user != null) {
+			// 修改账户金额
 			user.setAccount(user.getAccount() - money);
+			// 提升会员积分
+			if ("A".equals(user.getLevel())) {
+				user.setScore(user.getScore() + (int) (money / 0.85));
+			} else if ("B".equals(user.getLevel())) {
+				user.setScore(user.getScore() + (int) (money / 0.9));
+			} else if ("C".equals(user.getLevel())) {
+				user.setScore(user.getScore() + money.intValue());
+			}
+			// 根据当前积分修改会员级别
+			if (user.getScore() < 500) {
+				user.setLevel("C");
+			} else if (500 <= user.getScore() && user.getScore() < 1500) {
+				user.setLevel("B");
+			} else if (user.getScore() >= 1500) {
+				user.setLevel("A");
+			}
+			// 同时更新session中user的值
+			session.setAttribute("user", user);
 			userService.update(user);
 		}
-		// 修改购买后，商品数量
+		// 购买后，修改商品数量
 		goods = goodsService.findById(id); // 需要使用get()，否则可能存在session懒加载错误
 		goods.setAmount(goods.getAmount() - count);
 		goodsService.update(goods);
-		
+
 		return SUCCESS;
 	}
-	
+
 	/**
 	 * 注销用户
 	 */
-	@Action(value="cancel", results={
-			@Result(name="success", location="/WEB-INF/jsp/index.jsp")})
+	@Action(value = "cancel", results = { @Result(name = "success", location = "/WEB-INF/jsp/index.jsp") })
 	public String cancel() {
-			categoryList = categoryService.list(); //为了每次页面跳转，首页都会显示导航的菜单
-			//移除session中的用户
-			session.removeAttribute("user");
-			
-			return SUCCESS;
+		categoryList = categoryService.list(); // 为了每次页面跳转，首页都会显示导航的菜单
+		// 移除session中的用户
+		session.removeAttribute("user");
+		// 移除session中的历史页面
+		session.removeAttribute("goUrl");
+
+		return SUCCESS;
 	}
-	
+
 	/**
-	 *  检测用户是否重复提交
-	 *      true ：用户重复提交了表单 
-	 *      false：用户没有重复提交表单
+	 * 检测用户是否重复提交 true ：用户重复提交了表单 false：用户没有重复提交表单
 	 */
 	private boolean isRepeatSubmit(HttpServletRequest request) {
 		String client_token = request.getParameter("token");
 		String server_token = (String) request.getSession().getAttribute("token");
-		
+
 		// 1、如果用户提交的表单数据中没有token，则用户是重复提交了表单
-		if(client_token == null){
+		if (client_token == null) {
 			return true;
 		}
-		
+
 		// 2、如果当前用户的Session中不存在Token(令牌)，则用户是重复提交了表单
-		if(server_token == null){
+		if (server_token == null) {
 			return true;
 		}
-		
+
 		// 3、存储在Session中的Token(令牌)与表单提交的Token(令牌)不同，则用户是重复提交了表单
-		if(!client_token.equals(server_token)){
+		if (!client_token.equals(server_token)) {
 			return true;
 		}
-		
+
 		return false;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -383,5 +379,5 @@ public class BaseAction extends ActionSupport {
 	public void setGoUrl(String goUrl) {
 		this.goUrl = goUrl;
 	}
-	
+
 }
