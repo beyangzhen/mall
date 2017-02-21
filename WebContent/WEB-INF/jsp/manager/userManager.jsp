@@ -30,7 +30,12 @@
 		<td><input type="checkbox" value="${u.id }"/></td>
 		<td>${u.username }</td>
 		<td>${u.password }</td>
-		<td>${u.level }</td>
+		<td>
+			<c:if test="${u.level == 'M'}">管理员(M)</c:if>
+			<c:if test="${u.level == 'A'}">钻石会员(A)</c:if>
+			<c:if test="${u.level == 'B'}">黄金会员(B)</c:if>
+			<c:if test="${u.level == 'C'}">大众会员(C)</c:if>
+		</td>
 		<td>${u.phone }</td>
 		<td>${u.address }</td>
 		<td>￥${u.account }</td>
