@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
 	th{
 		background: lightblue;
@@ -20,6 +21,7 @@
 		<th>用户名称</th>
 		<th>用户密码</th>
 		<th>用户级别</th>
+		<th>会员积分</th>
 		<th>电话</th>
 		<th>地址</th>
 		<th>账户金额</th>
@@ -36,9 +38,15 @@
 			<c:if test="${u.level == 'B'}">黄金会员(B)</c:if>
 			<c:if test="${u.level == 'C'}">大众会员(C)</c:if>
 		</td>
+		<td>
+			<c:if test="${u.level == 'M'}">---</c:if>
+			<c:if test="${u.level != 'M'}">${u.score }</c:if>
+		</td>
 		<td>${u.phone }</td>
 		<td>${u.address }</td>
-		<td>￥${u.account }</td>
+		<td>
+			￥<fmt:formatNumber type="number" value="${u.account }" maxFractionDigits="2" minFractionDigits="2"/>
+		</td>
 		<td>
 			<a href="javascript:void(0);" val="${u.id }" style="color:green;" class="upd">修改</a>
 			<a href="javascript:void(0);" val="${u.id }" style="color:green;" class="del">删除</a>
