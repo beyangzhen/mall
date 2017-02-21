@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 	<title>用户信息</title>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/theme/1/css/front/styles.css">
 	<link rel="icon" href="${pageContext.request.contextPath}/theme/1/images/icon/favicon.ico">
@@ -51,7 +52,8 @@
 			<td>${user.phone }</td>
 			<td>${user.address }</td>
 			<td>
-				￥${user.account }<a href="javascript:void(0);" val="${user.id }" style="color:red; padding-left:8px;" class="rechar">充值</a>
+				￥<fmt:formatNumber type="number" value="${user.account }" maxFractionDigits="2" minFractionDigits="2"/>
+				<a href="javascript:void(0);" val="${user.id }" style="color:red; padding-left:8px;" class="rechar">充值</a>
 			</td>
 		</tr>
 	</table>
