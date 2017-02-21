@@ -45,7 +45,7 @@
 				<c:if test="${user.level == 'C'}">大众会员(C)</c:if>
 			</td>
 			<td>
-				<c:if test="${user.level == 'M'}">--</c:if>
+				<c:if test="${user.level == 'M'}">---</c:if>
 				<c:if test="${user.level != 'M'}">${user.score }</c:if>
 			</td>
 			<td>${user.phone }</td>
