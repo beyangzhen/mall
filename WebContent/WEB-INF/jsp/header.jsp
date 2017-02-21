@@ -12,7 +12,7 @@
 					<span class="sp_backstage"><a href="manager/toIndex.action">后台管理</a></span>
 					<span class="sp_signout"><a href="cancel.action">注销</a></span>
 				</c:if>
-				<c:if test="${sessionScope.user.level == 'C' }">
+				<c:if test="${sessionScope.user.level == 'A' || sessionScope.user.level == 'B' || sessionScope.user.level == 'C' }">
 					<span>欢迎您，<a href="toUserInfor.action?username=${sessionScope.user.username }">${sessionScope.user.username }</a> 【大众会员】</span>
 					<span class="sp_home"><a href="toIndex.action">首页</a></span>
 					<span class="sp_signout"><a href="cancel.action">注销</a></span>
