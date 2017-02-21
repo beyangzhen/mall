@@ -94,13 +94,13 @@ public class UserAction extends ActionSupport {
 		user.setUsername(username);
 		user.setPassword(password);
 		user.setLevel(level);
-		if ("M" == level) {
+		if ("M".equals(level)) {
 			user.setScore(-1); // 管理员不存在积分
-		} else if ("A" == level) {
+		} else if ("A".equals(level)) {
 			user.setScore(1500);
-		} else if ("B" == level) {
+		} else if ("B".equals(level)) {
 			user.setScore(500);
-		} else if ("C" == level) {
+		} else if ("C".equals(level)) {
 			user.setScore(0);
 		}
 		user.setPhone(phone);
@@ -127,21 +127,24 @@ public class UserAction extends ActionSupport {
 		user.setUsername(username);
 		user.setPassword(password);
 		user.setLevel(level);
-		if ("M" == level) {
+		if ("M".equals(level)) {
 			user.setScore(-1); // 管理员不存在积分
-		} else if ("A" == level) {
+		} else if ("A".equals(level)) {
 			user.setScore(1500);
-		} else if ("B" == level) {
+		} else if ("B".equals(level)) {
 			user.setScore(500);
-		} else if ("C" == level) {
+		} else if ("C".equals(level)) {
 			user.setScore(0);
 		}
 		user.setPhone(phone);
 		user.setAddress(address);
 		// 调用sercice层的服务，完成修改用户的功能
 		userService.update(user);
-		// 同时修改session中的值
-		session.setAttribute("user", user);
+		// 修改的为当前session中user时，同时修改session中的值
+		User userSession = (User) session.getAttribute("user");
+		if (id == userSession.getId()) {
+			session.setAttribute("user", user);
+		}
 	}
 
 	/**
