@@ -4,6 +4,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -20,7 +21,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	<link rel="stylesheet" type="text/css" href="theme/1/css/front/styles.css">
 
-	<link rel="icon" href="theme/1/images/icon/favicon.ico">
 
   </head>
   
@@ -40,26 +40,84 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    		<td><font size="2px" color="#970102" style="font-weight:bold;">订单信息</font></td>
 		    	</tr>
 		    	<tr>
-		    		<td width="21%"><font size="2px" color="gray" style="font-weight:bold;">商品</font></td>
-		    		<td><font size="2px" color="gray" style="font-weight:bold;">尺码</font></td>
-		    		<td><font size="2px" color="gray" style="font-weight:bold;">单价</font></td>
-		    		<td><font size="2px" color="gray" style="font-weight:bold;">数量</font></td>
-		    		<td><font size="2px" color="gray" style="font-weight:bold;">小计</font></td>
+		    		<td align="center" width="13%"><font size="2px" color="gray" style="font-weight:bold;">商品</font></td>
+		    		<td align="center" width="13%"><font size="2px" color="gray" style="font-weight:bold;">尺码</font></td>
+		    		<td align="center" width="13%"><font size="2px" color="gray" style="font-weight:bold;">单价</font></td>
+		    		<td align="center" width="13%"><font size="2px" color="gray" style="font-weight:bold;">数量</font></td>
+		    		<td align="center" width="13%"><font size="2px" color="gray" style="font-weight:bold;">会员级别</font></td>
+		    		<td align="center" width="25%"><font size="2px" color="gray" style="font-weight:bold;">会员折扣</font></td>
+		    		<td align="center" width="21%"><font size="2px" color="gray" style="font-weight:bold;">小计</font></td>
 	    		</tr>
 		    	<tr>
-		    		<td><font size="2px" color="gray">${goods.name }</font></td>
-		    		<td><font size="2px" color="gray">${size }</font></td>
-		    		<td><font size="2px" color="gray">${goods.price }</font></td>
-		    		<td><font size="2px" color="gray">${count }</font></td>
-		    		<td><font size="2px" color="gray">${goods.price * count }</font></td>
+		    		<td align="center"><font size="2px" color="gray">${goods.name }</font></td>
+		    		<td align="center"><font size="2px" color="gray">${size }</font></td>
+		    		<td align="center"><font size="2px" color="gray">${goods.price }</font></td>
+		    		<td align="center"><font size="2px" color="gray">${count }</font></td>
+		    		<td align="center"><font size="2px" color="gray">${sessionScope.user.level }</font></td>
+		    		<td align="center">
+		    			<font size="2px" color="gray">
+		    				<c:if test="${sessionScope.user.level == 'M' || sessionScope.user.level == 'A' }">
+		    					0.85
+		    				</c:if>
+		    				<c:if test="${sessionScope.user.level == 'B' }">
+		    					0.9
+		    				</c:if>
+		    				<c:if test="${sessionScope.user.level == 'C' }">
+		    					1
+		    				</c:if>
+		    			</font>
+		    		</td>
+		    		<td align="center">
+		    			<font size="2px" color="#970102" style="font-weight:bold;">
+		    				${goods.price * count }*
+		    				<c:if test="${sessionScope.user.level == 'M' || sessionScope.user.level == 'A' }">
+		    					0.85
+		    				</c:if>
+		    				<c:if test="${sessionScope.user.level == 'B' }">
+		    					0.9
+		    				</c:if>
+		    				<c:if test="${sessionScope.user.level == 'C' }">
+		    					1
+		    				</c:if>
+		    				<c:if test="${sessionScope.user.level == 'M' || sessionScope.user.level == 'A' }">
+		    					=<fmt:formatNumber type="number" value="${goods.price * count * 0.85 }" maxFractionDigits="2" minFractionDigits="2"/>
+		    				</c:if>
+		    				<c:if test="${sessionScope.user.level == 'B' }">
+		    					=<fmt:formatNumber type="number" value="${goods.price * count * 0.9 }" maxFractionDigits="2" minFractionDigits="2"/>
+		    				</c:if>
+		    				<c:if test="${sessionScope.user.level == 'C' }">
+		    					=<fmt:formatNumber type="number" value="${goods.price * count * 1 }" maxFractionDigits="2" minFractionDigits="2"/>
+		    				</c:if>
+		    			</font>
+		    		</td>
 		    	</tr>
 	    	</table>
 	    </div>
 	    <div id="money">	
-	    	<font size="5px" color="gray" style="font-weight:bold;">实付款：<font color="#970102">￥${goods.price * count }</font></font> 
+	    	<font size="5px" color="gray" style="font-weight:bold;">实付款：
+		    	<font color="#970102">
+		    		￥<c:if test="${sessionScope.user.level == 'M' || sessionScope.user.level == 'A' }">
+		    			<fmt:formatNumber type="number" value="${goods.price * count * 0.85 }" maxFractionDigits="2" minFractionDigits="2"/>
+    				 </c:if>
+    				 <c:if test="${sessionScope.user.level == 'B' }">
+    				 	<fmt:formatNumber type="number" value="${goods.price * count * 0.9 }" maxFractionDigits="2" minFractionDigits="2"/>
+    				 </c:if>
+    				 <c:if test="${sessionScope.user.level == 'C' }">
+    					<fmt:formatNumber type="number" value="${goods.price * count * 1 }" maxFractionDigits="2" minFractionDigits="2"/>
+    				 </c:if>
+		    	</font>
+	    	</font> 
 		</div>  	
 		<div style="text-align:center;">
-			<form name="form1" action="pay.action?id=${goods.id }&size=${size }&count=${count }&money=${goods.price * count }" method="post">
+			<c:if test="${sessionScope.user.level == 'M' || sessionScope.user.level == 'A' }">
+				<form name="form1" action="pay.action?id=${goods.id }&size=${size }&count=${count }&money=${goods.price * count * 0.85 }" method="post">
+			</c:if>
+			<c:if test="${sessionScope.user.level == 'B' }">
+				<form name="form1" action="pay.action?id=${goods.id }&size=${size }&count=${count }&money=${goods.price * count * 0.9 }" method="post">
+			</c:if>
+			<c:if test="${sessionScope.user.level == 'C' }">
+				<form name="form1" action="pay.action?id=${goods.id }&size=${size }&count=${count }&money=${goods.price * count * 1 }" method="post">
+			</c:if>
 				<!-- 取出session中token存入表单中 -->
         		<input type="hidden" name="token" value="${token}"/>
 				<input id="payButton" name="pay" type="submit" value="支付">
