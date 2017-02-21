@@ -44,7 +44,10 @@
 				<c:if test="${user.level == 'B'}">黄金会员(B)</c:if>
 				<c:if test="${user.level == 'C'}">大众会员(C)</c:if>
 			</td>
-			<td>${user.score }</td>
+			<td>
+				<c:if test="${user.level == 'M'}">--</c:if>
+				<c:if test="${user.level != 'M'}">${user.score }</c:if>
+			</td>
 			<td>${user.phone }</td>
 			<td>${user.address }</td>
 			<td>
