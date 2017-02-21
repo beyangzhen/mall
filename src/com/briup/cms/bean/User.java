@@ -16,8 +16,11 @@ public class User {
 	private String username; // 用户名
 	private String password; // 密码
 	/**
-	 * 用户级别（M为管理员，A为钻石会员，B为黄金会员，C为大众会员） M：折扣为 0.85 A：>1000 积分，折扣为 0.85 B：500~1000积分，折扣为 0.9 C：<500
-	 * 积分，折扣为 1
+	 * 用户级别（M为管理员，A为钻石会员，B为黄金会员，C为大众会员）
+	 *  M：折扣为 0.85 
+	 *  A：折扣为 0.85，>1500 积分
+	 *  B：折扣为 0.9   ，500~1500积分
+	 *  C：折扣为 1         ，<500积分
 	 */
 	private String level;
 	/**
@@ -69,7 +72,7 @@ public class User {
 	public void setScore(Integer score) {
 		this.score = score;
 	}
-
+	
 	public String getPhone() {
 		return phone;
 	}
@@ -94,4 +97,10 @@ public class User {
 		this.account = account;
 	}
 
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", level=" + level + ", score="
+				+ score + ", phone=" + phone + ", address=" + address + ", account=" + account + "]";
+	}
+	
 }
